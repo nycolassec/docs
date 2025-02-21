@@ -1,0 +1,18 @@
+{
+  "alwaysUpdateLinks": true,
+  "promptDelete": false,
+  "vimMode": false,
+  "showLineNumber": false,
+  "rightToLeft": false,
+  "showIndentGuide": false,
+  "pdfExportSettings": {
+    "includeName": true,
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "2",
+    "downscalePercent": 90
+  },
+  "readableLineLength": true,
+  "strictLineBreaks": false,
+  "foldHeading": true
+}
