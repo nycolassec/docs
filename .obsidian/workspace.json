@@ -4,51 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "8a4bdb8a92d8a50a",
-        "type": "split",
+        "id": "c2e1ae6776222d16",
+        "type": "tabs",
         "children": [
           {
-            "id": "94cbb7c8fc604965",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "a961eef0449123e7",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "Cyber/CISCO - CyberOps Associate/17 - Attacking What We Do.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "17 - Attacking What We Do"
-                }
-              }
-            ]
-          },
-          {
-            "id": "d55f1fb2950f7808",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "1debecff1e4088df",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "Linguagens/Ingles - phrases.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "Ingles - phrases"
-                }
-              }
-            ]
+            "id": "d9d91907960e0372",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "Pasted image 20250204091347.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20250204091347"
+            }
           }
-        ],
-        "direction": "horizontal"
+        ]
       }
     ],
     "direction": "vertical"
@@ -80,7 +51,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "eigrp",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -119,8 +90,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 349.5,
-    "collapsed": true
+    "width": 330
   },
   "right": {
     "id": "6e350f3182938e8a",
@@ -136,6 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Cyber/CISCO - CyberOps Associate/21 - Criptography.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +116,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Links inversos para 21 - Criptography"
             }
           },
           {
@@ -205,55 +176,54 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "a961eef0449123e7",
+  "active": "d9d91907960e0372",
   "lastOpenFiles": [
-    "Cyber/CISCO - CyberOps Associate/16 - Attacking the Foundations.md",
-    "Cyber/CISCO - CyberOps Associate/17 - Attacking What We Do.md",
     "image63.webp",
-    "Sem título.canvas",
-    "Pasted image 20250219082510.png",
-    "Pasted image 20250214094140.png",
-    "Pasted image 20250213140854.png",
-    "Writeups/CTF/Try Hack Me - Pickle Rick.md",
-    "Linguagens/Ingles - phrases.md",
-    "Cyber/CISCO - CyberOps Associate/15 - Introduction  to Network Monitoring Tools.md",
-    "Cyber/CISCO - CyberOps Associate/13 - Common Threats and Attacks.md",
-    "Linux/Servicos/Linux - Configurando autenticação com o LDAP.md",
-    "images/Pasted image 20241205172954.png",
-    "images/Pasted image 20241205172649.png",
-    "images/Pasted image 20241205172344.png",
-    "Geral/Assuntos para estudar.md",
-    "Cyber/Cyber - Info.md",
-    "Pasted image 20250204113044.png",
-    "Pasted image 20250205094044.png",
-    "Pasted image 20250218190231.png",
-    "Linguagens/C/Sem título.md",
-    "Excalidraw/Processo-LDAP.excalidraw.md",
-    "Excalidraw/X.500.md",
-    "Cyber/CISCO - CyberOps Associate/12 - Network Security Infrastructure.md",
-    "Cyber/CISCO - CyberOps Associate/11 - Network Communication Devices.md",
-    "Cyber/CISCO - CyberOps Associate/Checkpoints Exams/Threat Actors and Defenders Group Exam.md",
     "Certificados.md",
+    "Pasted image 20250204091347.png",
+    "Pasted image 20250204113044.png",
+    "Pasted image 20250204134940.png",
+    "Pasted image 20250213140854.png",
+    "Pasted image 20250214080758.png",
+    "Pasted image 20250218082940.png",
+    "Pasted image 20250218111202.png",
+    "Pasted image 20250225083806.png",
+    "Redes/Protocolos/OSI - TCP IP.md",
+    "Redes/Protocolos/IPv4 - IPv6.md",
+    "Redes/Protocolos/DHCPv4 - DHCPv6 - SLAAC.md",
+    "Pasted image 20250218110927.png",
+    "README.md",
+    "Redes/Protocolos/LDAP - x.500.md",
+    "Redes/Protocolos/HTTP - HTTPS - REST.md",
+    "Redes/Protocolos/FTP - SFTP - TFTP.md",
+    "Cyber/CISCO - CyberOps Associate/21 - Criptography.md",
+    "Cyber/CISCO - CyberOps Associate/20 - Threat Intelligence Services.md",
+    "Cyber/CISCO - CyberOps Associate/19 -Access Controls Concepts.md",
+    "Geral/Links.md",
+    "Geral/Descritivo.md",
+    "Windows/GPOs.md",
+    "Geral/Assuntos para estudar.md",
+    "Windows/PowerShell/PowerShell - Criando usuarios por CSV.md",
+    "Writeups/CTF/Try Hack Me - Pickle Rick.pdf",
+    "Writeups/DFIR/HTB Sherlock - Unit 42.pdf",
+    "Writeups/DFIR/HTB - Unit42/HTB - Unit42.md",
+    "Windows/Cyber - Reconhecimento no Windows.md",
+    "Writeups/CTF/Try Hack Me - Pickle Rick.md",
+    "Cyber/CISCO - CyberOps Associate/Checkpoints Exams/Network Fundamentals.md",
+    "Cyber/CISCO - CyberOps Associate/Checkpoints Exams/Threat Actors and Defenders Group Exam.md",
+    "Redes/Protocolos/Ethernet.md",
+    "Redes/Protocolos/SMTP - POP3 - IMAP.md",
+    "Cyber/Cyber - Info.md",
+    "Cyber/CISCO - CyberOps Associate/18 - Understanding Defense.md",
+    "Sem título.canvas",
     "Cyber/CISCO - CyberOps Associate/Checkpoints Exams/Sem título",
     "Cyber/CISCO - CyberOps Associate/Checkpoints Exams",
-    "Cyber/CISCO - CyberOps Associate/1 - The Danger.md",
-    "Cyber/CISCO - CyberOps Associate/10 - Network Services.md",
-    "Windows/Cyber - Reconhecimento no Windows.md",
-    "Windows/GPOs.md",
-    "Windows/PowerShell/PowerShell - Criando usuarios por CSV.md",
-    "Redes/Protocolos/LDAP.md",
-    "Cyber/CISCO - CyberOps Associate/9 - The Transport layer.md",
-    "Cyber/CISCO - CyberOps Associate/8 - Address Resolution Protocol.md",
-    "Cyber/CISCO - CyberOps Associate/2 - Fighters in the War Against Cybercrime.md",
-    "README.md",
     "Cyber/CISCO - CyberOps Associate",
     "Linux/Servicos",
     "Linux",
-    "Redes/Protocolos/Images",
+    "Redes/Images",
     "Redes/Protocolos",
     "Windows/PowerShell",
-    "Windows/Images",
-    "Geral",
     "Untitled 2.canvas",
     "Untitled 1.canvas",
     "Untitled.canvas",

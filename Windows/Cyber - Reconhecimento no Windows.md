@@ -17,9 +17,6 @@ Obtain a list of domain administrators.
 ```
 
 
-
-
-
 ```powershell
 
 ```

@@ -1,3 +1,4 @@
+#ldap #x500 #pam #nss
 ## Definição
 ---
 LDAP ( **L**ightweight **D**irectory **A**ccess **P**rotocol ) é um protocolo de acesso e gerenciamento de informações em um **serviço/estrutura** de diretório (como o **x.500**). Muito usado para autenticação, autorização e armazenar informação sobre usuários, grupos e outros recursos de rede, como impressoras e servidores.
