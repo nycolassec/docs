@@ -11,12 +11,14 @@
             "id": "d9d91907960e0372",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Pasted image 20250204091347.png"
+                "file": "Linux/Servicos/Configurando PKI 2 tier.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20250204091347"
+              "icon": "lucide-file",
+              "title": "Configurando PKI 2 tier"
             }
           }
         ]
@@ -90,7 +92,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 330
+    "width": 330,
+    "collapsed": true
   },
   "right": {
     "id": "6e350f3182938e8a",
@@ -178,9 +181,10 @@
   },
   "active": "d9d91907960e0372",
   "lastOpenFiles": [
+    "Pasted image 20250204091347.png",
+    "Linux/Servicos/Configurando PKI 2 tier.md",
     "image63.webp",
     "Certificados.md",
-    "Pasted image 20250204091347.png",
     "Pasted image 20250204113044.png",
     "Pasted image 20250204134940.png",
     "Pasted image 20250213140854.png",
@@ -214,7 +218,6 @@
     "Redes/Protocolos/Ethernet.md",
     "Redes/Protocolos/SMTP - POP3 - IMAP.md",
     "Cyber/Cyber - Info.md",
-    "Cyber/CISCO - CyberOps Associate/18 - Understanding Defense.md",
     "Sem título.canvas",
     "Cyber/CISCO - CyberOps Associate/Checkpoints Exams/Sem título",
     "Cyber/CISCO - CyberOps Associate/Checkpoints Exams",
