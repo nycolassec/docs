@@ -1,6 +1,20 @@
 ## Redes
 x.500 protocol
 LDAP
+VxLAN
+MPLS
+VXLAN
+EVPN
+MTU
+vPCs
+NVE
+VTEPs
+
+# Servidores
+- [ ] MongoDB
+- [ ] Cassandra
+- [ ] NGINX
+- [ ] REDIS
 
 ---
 Windows - Banco de dados SRUM
@@ -9,14 +23,6 @@ Windows - USN Journal
 Windows - MFT
 Windows - pagefile.sys
 
-Cyber - Kape
-Cyber - Autopsy
-Cyber - Chainsaw
-Cyber - PECmd
-Cyber - Yara
-Cyber - Volatility
-
----
 ---
 https://pentestlab.blog/2017/06/07/uac-bypass-fodhelper/
 
@@ -27,37 +33,16 @@ https://pentestlab.blog/2017/06/07/uac-bypass-fodhelper/
 [USN-Journal-Parser](https://github.com/PoorBillionaire/USN-Journal-Parser/tree/master)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Pesquisar
-
-[[Redes - VxLAN]]
-
-MPLS
-VXLAN
-EVPN
-MTU
-vPCs
-NVE
-VTEPs
----
 ---
 ## Cyber
 ---
 SANS triage
+Cyber - Kape
+Cyber - Autopsy
+Cyber - Chainsaw
+Cyber - PECmd
+Cyber - Yara
+Cyber - Volatility
 
 #### NTFS
 ---
@@ -134,23 +119,6 @@ Incident Response
 IPS / IDS
 EDR
 Splunk
-
-
----
----
-## Redes
----
-VxLAN
-MPLS
-VXLAN
-EVPN
-MTU
-vPCs
-NVE
-VTEPs
-
-
-
 
 
 
