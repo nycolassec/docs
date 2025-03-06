@@ -4,19 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "c2ff62123121aa08",
+        "id": "5a63e17df598bbe9",
         "type": "tabs",
         "children": [
           {
-            "id": "d2eae87a7019b1d6",
+            "id": "e82b9026739976f3",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "image63.webp"
+                "file": "Cyber/CISCO - CyberOps Associate/24 - Technologies.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "image63"
+              "icon": "lucide-file",
+              "title": "24 - Technologies"
             }
           }
         ]
@@ -90,7 +92,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 330
+    "width": 330,
+    "collapsed": true
   },
   "right": {
     "id": "6e350f3182938e8a",
@@ -176,27 +179,39 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "d2eae87a7019b1d6",
+  "active": "e82b9026739976f3",
   "lastOpenFiles": [
+    "Cyber/CISCO - CyberOps Associate/24 - Technologies.md",
+    "Cyber/CISCO - CyberOps Associate/Checkpoints Exams/Network Fundamentals.md",
+    "Cyber/CISCO - CyberOps Associate/Checkpoints Exams/Threat Actors and Defenders Group Exam.md",
+    "Pasted image 20250205094044.png",
+    "Pasted image 20250213140854.png",
+    "Pasted image 20250204143329.png",
+    "Pasted image 20250214080758.png",
+    "Pasted image 20250214081936.png",
+    "Pasted image 20250214094140.png",
+    "Pasted image 20250218110711.png",
+    "Pasted image 20250225083806.png",
+    "Pasted image 20250306083825.png",
+    "Cyber/CISCO - CyberOps Associate/23 - Endpoint Vulnerability Assessment.md",
+    "Redes/Infra/IOS - Configuração Inicial.md",
+    "Redes/Infra/Configurações em FTP Server.md",
+    "Redes/CCNA/Wrong questions.md",
+    "Redes/Infra/DHCP em roteadores CISCO.md",
+    "Redes/Infra/DHCP para VLANs no IOS.md",
+    "Redes/Infra/Layer 2 Etherchannel.md",
+    "Redes/Infra/SSH em equipamentos CISCO.md",
+    "Redes/Infra/SSH no IOS.md",
+    "Redes/Infra/Servidor VTP.md",
+    "image63.webp",
     "Writeups/DFIR/HTB Sherlock - Unit 42.pdf",
     "Writeups/CTF/Try Hack Me - Pickle Rick.pdf",
     "Writeups/CTF/escapetwo.pdf.md",
     "Certificados.md",
-    "image63.webp",
-    "Pasted image 20250218110711.png",
-    "Pasted image 20250218110927.png",
-    "Pasted image 20250218111202.png",
-    "Pasted image 20250218111246.png",
-    "Pasted image 20250218112322.png",
-    "Pasted image 20250225083806.png",
-    "Pasted image 20250227174941.png",
     "README.md",
-    "Pasted image 20250306083825.png",
-    "Pasted image 20250227142744.png",
     "Redes/Protocolos/ARP - ND.md",
     "Redes/Protocolos/IPv4 - IPv6.md",
     "Redes/OSI/L3 - Network Layer.md",
-    "Redes/CCNA/Wrong questions.md",
     "Geral/Links.md",
     "Geral/Assuntos para estudar.md",
     "Geral/Descritivo.md",
@@ -204,18 +219,7 @@
     "Windows/Windows Server/Windows Server - Cota.md",
     "Windows/Windows Server/Windows Server - GPOs.md",
     "Windows/Windows Server/Active Directory.md",
-    "Windows/Windows Server/Windows Server - Conta Local - Administrar serviços de domínio Active Directory.md",
-    "Cyber/CISCO - CyberOps Associate/23 - Endpoint Vulnerability Assessment.md",
-    "Cyber/CISCO - CyberOps Associate/22 - Endpoint Protection.md",
-    "Cyber/CISCO - CyberOps Associate/21 - Criptography.md",
-    "Redes/OSI/L2 - Data Link Layer.md",
-    "Redes/Protocolos/OSI - TCP IP.md",
-    "Redes/Protocolos/HTTP - HTTPS - REST.md",
-    "Redes/Protocolos/LDAP - x.500.md",
-    "Redes/Protocolos/SMTP - POP3 - IMAP.md",
-    "Redes/Protocolos/Ethernet.md",
     "Redes/CCNA",
-    "Cyber/CISCO - CyberOps Associate/11 - Network Communication Devices.md",
     "Linux/Infra",
     "Redes/OSI",
     "Sem título.canvas",
