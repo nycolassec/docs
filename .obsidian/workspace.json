@@ -4,21 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "3e573d9c2dfddf2d",
+        "id": "c2ff62123121aa08",
         "type": "tabs",
         "children": [
           {
-            "id": "5f090dcb083c330f",
+            "id": "d2eae87a7019b1d6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Cyber/CISCO - CyberOps Associate/22 - Endpoint Protection.md",
-                "mode": "source",
-                "source": false
+                "file": "image63.webp"
               },
-              "icon": "lucide-file",
-              "title": "22 - Endpoint Protection"
+              "icon": "lucide-image",
+              "title": "image63"
             }
           }
         ]
@@ -92,8 +90,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 330,
-    "collapsed": true
+    "width": 330
   },
   "right": {
     "id": "6e350f3182938e8a",
@@ -179,49 +176,48 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "5f090dcb083c330f",
+  "active": "d2eae87a7019b1d6",
   "lastOpenFiles": [
-    "Cyber/CISCO - CyberOps Associate/21 - Criptography.md",
-    "Cyber/CISCO - CyberOps Associate/22 - Endpoint Protection.md",
-    "Pasted image 20250227174941.png",
+    "Writeups/DFIR/HTB Sherlock - Unit 42.pdf",
+    "Writeups/CTF/Try Hack Me - Pickle Rick.pdf",
+    "Writeups/CTF/escapetwo.pdf.md",
+    "Certificados.md",
     "image63.webp",
-    "Pasted image 20250214082404.png",
-    "Pasted image 20250214094140.png",
-    "Pasted image 20250218090017.png",
+    "Pasted image 20250218110711.png",
+    "Pasted image 20250218110927.png",
     "Pasted image 20250218111202.png",
-    "Redes/CCNA/Wrong questions.md",
-    "Redes/OSI/L2 - Data Link Layer.md",
+    "Pasted image 20250218111246.png",
+    "Pasted image 20250218112322.png",
+    "Pasted image 20250225083806.png",
+    "Pasted image 20250227174941.png",
+    "README.md",
+    "Pasted image 20250306083825.png",
+    "Pasted image 20250227142744.png",
+    "Redes/Protocolos/ARP - ND.md",
     "Redes/Protocolos/IPv4 - IPv6.md",
+    "Redes/OSI/L3 - Network Layer.md",
+    "Redes/CCNA/Wrong questions.md",
+    "Geral/Links.md",
+    "Geral/Assuntos para estudar.md",
+    "Geral/Descritivo.md",
+    "Windows/PowerShell/PowerShell - Criando usuarios por CSV.md",
+    "Windows/Windows Server/Windows Server - Cota.md",
+    "Windows/Windows Server/Windows Server - GPOs.md",
+    "Windows/Windows Server/Active Directory.md",
+    "Windows/Windows Server/Windows Server - Conta Local - Administrar serviços de domínio Active Directory.md",
+    "Cyber/CISCO - CyberOps Associate/23 - Endpoint Vulnerability Assessment.md",
+    "Cyber/CISCO - CyberOps Associate/22 - Endpoint Protection.md",
+    "Cyber/CISCO - CyberOps Associate/21 - Criptography.md",
+    "Redes/OSI/L2 - Data Link Layer.md",
     "Redes/Protocolos/OSI - TCP IP.md",
     "Redes/Protocolos/HTTP - HTTPS - REST.md",
     "Redes/Protocolos/LDAP - x.500.md",
     "Redes/Protocolos/SMTP - POP3 - IMAP.md",
     "Redes/Protocolos/Ethernet.md",
-    "Pasted image 20250227142846.png",
-    "Pasted image 20250227142744.png",
-    "Pasted image 20250227142619.png",
-    "Pasted image 20250227142301.png",
-    "Geral/Assuntos para estudar.md",
     "Redes/CCNA",
     "Cyber/CISCO - CyberOps Associate/11 - Network Communication Devices.md",
-    "Redes/OSI/L3 - Network Layer.md",
-    "Redes/Protocolos/Sem título.md",
-    "Redes/Protocolos/DHCPv4 - DHCPv6 - SLAAC.md",
-    "Writeups/CTF/escapetwo.pdf.md",
-    "Writeups/CTF/Try Hack Me - Pickle Rick.pdf",
-    "Redes/OSI/L1 - Physical Layer.md",
-    "Linux/Tips.md",
     "Linux/Infra",
     "Redes/OSI",
-    "Writeups/DFIR/HTB Sherlock - Unit 42.pdf",
-    "Certificados.md",
-    "Redes/Infra/SSH no IOS.md",
-    "Redes/Infra/Servidor VTP.md",
-    "Redes/Infra/DHCP em roteadores CISCO.md",
-    "Redes/Infra/Configurações em FTP Server.md",
-    "Linux/Servicos/Configurando PKI 2 tier.md",
-    "README.md",
-    "Redes/Protocolos/FTP - SFTP - TFTP.md",
     "Sem título.canvas",
     "Cyber/CISCO - CyberOps Associate/Checkpoints Exams/Sem título",
     "Cyber/CISCO - CyberOps Associate/Checkpoints Exams",
