@@ -145,9 +145,9 @@ There are **dozens** of ransomware variants.
 
 Malware is a **means** to get a payload delivered.
 
+ACLs can **give** a false sense of security if they are **overly relied upon**.
 
-
-
+making flow information **beyond** that point unavailable
 
 
 

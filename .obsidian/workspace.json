@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Cyber/CISCO - CyberOps Associate/24 - Technologies.md",
+                "file": "Cyber/CISCO - CyberOps Associate/27 - ELK.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "24 - Technologies"
+              "title": "27 - ELK"
             }
           }
         ]
@@ -181,6 +181,16 @@
   },
   "active": "e82b9026739976f3",
   "lastOpenFiles": [
+    "Pasted image 20250307183434.png",
+    "Cyber/CISCO - CyberOps Associate/26 - Security Onion.md",
+    "Cyber/CISCO - CyberOps Associate/27 - ELK.md",
+    "Cyber/Cyber - Info.md",
+    "Cyber/CISCO - CyberOps Associate/25 - Network Security Data.md",
+    "Pasted image 20250307113022.png",
+    "Pasted image 20250307112448.png",
+    "Pasted image 20250307112440.png",
+    "Pasted image 20250307110320.png",
+    "Linguagens/Ingles - phrases.md",
     "Cyber/CISCO - CyberOps Associate/24 - Technologies.md",
     "Cyber/CISCO - CyberOps Associate/Checkpoints Exams/Network Fundamentals.md",
     "Cyber/CISCO - CyberOps Associate/Checkpoints Exams/Threat Actors and Defenders Group Exam.md",
@@ -190,9 +200,6 @@
     "Pasted image 20250214080758.png",
     "Pasted image 20250214081936.png",
     "Pasted image 20250214094140.png",
-    "Pasted image 20250218110711.png",
-    "Pasted image 20250225083806.png",
-    "Pasted image 20250306083825.png",
     "Cyber/CISCO - CyberOps Associate/23 - Endpoint Vulnerability Assessment.md",
     "Redes/Infra/IOS - Configuração Inicial.md",
     "Redes/Infra/Configurações em FTP Server.md",
@@ -203,7 +210,6 @@
     "Redes/Infra/SSH em equipamentos CISCO.md",
     "Redes/Infra/SSH no IOS.md",
     "Redes/Infra/Servidor VTP.md",
-    "image63.webp",
     "Writeups/DFIR/HTB Sherlock - Unit 42.pdf",
     "Writeups/CTF/Try Hack Me - Pickle Rick.pdf",
     "Writeups/CTF/escapetwo.pdf.md",
@@ -213,12 +219,6 @@
     "Redes/Protocolos/IPv4 - IPv6.md",
     "Redes/OSI/L3 - Network Layer.md",
     "Geral/Links.md",
-    "Geral/Assuntos para estudar.md",
-    "Geral/Descritivo.md",
-    "Windows/PowerShell/PowerShell - Criando usuarios por CSV.md",
-    "Windows/Windows Server/Windows Server - Cota.md",
-    "Windows/Windows Server/Windows Server - GPOs.md",
-    "Windows/Windows Server/Active Directory.md",
     "Redes/CCNA",
     "Linux/Infra",
     "Redes/OSI",
