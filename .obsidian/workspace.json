@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Cyber/CISCO - CyberOps Associate/27 - ELK.md",
+                "file": "Linguagens/C/C - Caracteres.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "27 - ELK"
+              "title": "C - Caracteres"
             }
           }
         ]
@@ -44,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Explorador de arquivos"
+              "title": "Files"
             }
           },
           {
@@ -92,8 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 330,
-    "collapsed": true
+    "width": 330
   },
   "right": {
     "id": "6e350f3182938e8a",
@@ -170,27 +169,31 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Abrir a troca rápida": false,
-      "graph:Abrir visualização em gráfico": false,
-      "canvas:Criar novo canvas": false,
-      "daily-notes:Abrir a nota de hoje": false,
-      "templates:Inserir modelo": false,
-      "command-palette:Abrir paleta de comandos": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
   "active": "e82b9026739976f3",
   "lastOpenFiles": [
+    "Linguagens/C/c - Entrada de teclado.md",
+    "Linguagens/C/c - Tipos de dados.md",
+    "Linguagens/Ingles - phrases.md",
+    "Linguagens/C/C - Caracteres.md",
+    "Linguagens/C/Sem título.md",
+    "Cyber/CISCO - CyberOps Associate/27 - ELK.md",
     "Pasted image 20250307183434.png",
     "Cyber/CISCO - CyberOps Associate/26 - Security Onion.md",
-    "Cyber/CISCO - CyberOps Associate/27 - ELK.md",
     "Cyber/Cyber - Info.md",
     "Cyber/CISCO - CyberOps Associate/25 - Network Security Data.md",
     "Pasted image 20250307113022.png",
     "Pasted image 20250307112448.png",
     "Pasted image 20250307112440.png",
     "Pasted image 20250307110320.png",
-    "Linguagens/Ingles - phrases.md",
     "Cyber/CISCO - CyberOps Associate/24 - Technologies.md",
     "Cyber/CISCO - CyberOps Associate/Checkpoints Exams/Network Fundamentals.md",
     "Cyber/CISCO - CyberOps Associate/Checkpoints Exams/Threat Actors and Defenders Group Exam.md",
@@ -199,7 +202,6 @@
     "Pasted image 20250204143329.png",
     "Pasted image 20250214080758.png",
     "Pasted image 20250214081936.png",
-    "Pasted image 20250214094140.png",
     "Cyber/CISCO - CyberOps Associate/23 - Endpoint Vulnerability Assessment.md",
     "Redes/Infra/IOS - Configuração Inicial.md",
     "Redes/Infra/Configurações em FTP Server.md",
@@ -216,9 +218,6 @@
     "Certificados.md",
     "README.md",
     "Redes/Protocolos/ARP - ND.md",
-    "Redes/Protocolos/IPv4 - IPv6.md",
-    "Redes/OSI/L3 - Network Layer.md",
-    "Geral/Links.md",
     "Redes/CCNA",
     "Linux/Infra",
     "Redes/OSI",
