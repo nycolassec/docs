@@ -71,15 +71,15 @@ all TACACS+ protocol exchanges are encrypted, while RADIUS only encrypts the use
 
 The table lists the differences between the two protocols.
 
-|**TACACS+**|**RADIUS**|
-|---|---|---|
-|**Functionality**|Separates AAA according to the AAA architecture, allowing modularity of the security server implementation|Combines authentication and authorization but separates accounting, allowing less flexibility in implementation than TACACS+|
-|**Standard**|Mostly Cisco supported|Open/RFC standard|
-|**Transport**|TCP|UDP|
-|**Protocol CHAP**|Bidirectional challenge and response as used in Challenge Handshake Authentication Protocol (CHAP)|Unidirectional challenge and response from the RADIUS security server to the RADIUS client|
-|**Confidentiality**|Entire packet encrypted|Password encrypted|
-|**Customization**|Provides authorization of router commands on a per-user or per-group basis|Has no option to authorize router commands on a per-user or per-group basis|
-|**Accounting**|Limited|Extensive|
+|                     | **TACACS+**                                                                                                | **RADIUS**                                                                                                                   |
+| ------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| **Functionality**   | Separates AAA according to the AAA architecture, allowing modularity of the security server implementation | Combines authentication and authorization but separates accounting, allowing less flexibility in implementation than TACACS+ |
+| **Standard**        | Mostly Cisco supported                                                                                     | Open/RFC standard                                                                                                            |
+| **Transport**       | TCP                                                                                                        | UDP                                                                                                                          |
+| **Protocol CHAP**   | Bidirectional challenge and response as used in Challenge Handshake Authentication Protocol (CHAP)         | Unidirectional challenge and response from the RADIUS security server to the RADIUS client                                   |
+| **Confidentiality** | Entire packet encrypted                                                                                    | Password encrypted                                                                                                           |
+| **Customization**   | Provides authorization of router commands on a per-user or per-group basis                                 | Has no option to authorize router commands on a per-user or per-group basis                                                  |
+| **Accounting**      | Limited                                                                                                    | Extensive                                                                                                                    |
 
 #### VPN
 In the simplest sense, a VPN connects two endpoints, such as a remote office to a central office, over a public network, to form a logical connection. The logical connections can be made at either Layer 2 or Layer 3.
