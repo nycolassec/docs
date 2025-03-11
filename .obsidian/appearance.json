@@ -1,11 +1,11 @@
 {
   "accentColor": "",
   "cssTheme": "Catppuccin",
-  "monospaceFontFamily": "FiraCode Nerd Font Mono",
-  "textFontFamily": "SF Pro Text",
+  "monospaceFontFamily": "Fira Code",
+  "textFontFamily": "Apple SD Gothic Neo",
   "baseFontSizeAction": true,
   "baseFontSize": 22,
   "theme": "obsidian",
-  "interfaceFontFamily": "SF Pro Text",
+  "interfaceFontFamily": "Apple SD Gothic Neo",
   "enabledCssSnippets": []
 }
