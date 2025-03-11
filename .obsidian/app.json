@@ -12,7 +12,7 @@
     "margin": "2",
     "downscalePercent": 90
   },
-  "readableLineLength": true,
+  "readableLineLength": false,
   "strictLineBreaks": false,
   "foldHeading": true
 }
