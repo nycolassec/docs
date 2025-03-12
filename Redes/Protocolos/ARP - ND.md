@@ -13,6 +13,7 @@ Mensagens ARP são encapsuladas diretamente em um quadro Ethernet usando os segu
 **Type** - Mensagens ARP tem um campo e tipo com 0x806. Isto informa a NIC que a porção de dados do frame precisa passar pelo processo de ARP.
 
 As entradas na tabela ARP tem carimbos de data e hora. Se o host não receber nenhum frame de algum dispositivo antes do carimbo de data e hora expirar, a entrada para este dispositivo é removida.
+***
 # ND
 O IPv6 Neighbor Discovery protocol é referenciado tanto como ND  como NDP. O ND provê resolução de endereço, descobrimento de roteador, e serviços de redirecionamento para IPv6 usando ICMPv6.
 
