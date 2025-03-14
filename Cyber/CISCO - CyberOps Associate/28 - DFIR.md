@@ -134,6 +134,12 @@ The preparation phase is when the CSIRT is created and trained. This phase is al
 Because there are so many different ways in which a security incident can occur, it is impossible to create instructions that completely cover each step to follow to handle them. Different types of incidents will require different responses.
 ###### **Attack Vectors**
 An organization should be prepared to handle any incident but should focus on the most common types of incidents so that they can be dealt with swiftly.
+- **Web** - Any attack that is initiated from a website or application hosted by a website.
+- **Email** - Any attack that is initiated from an email or email attachment.
+- **Loss or Theft** - Any equipment that is used by the organization such as a laptop, desktop, or smartphone can provide the required information for someone to initiate an attack.
+- **Impersonation** - When something or someone is replaced for the purpose of malicious intent.
+- **Attrition** - Any attack that uses brute force to attack devices, networks, or services.
+- **Media** - Any attack that is initiated from external storage or removable media.
 ###### **Detection**
 Some incidents are easy to detect while others may go undetected for months.
 There are two categories for the signs of an incident:

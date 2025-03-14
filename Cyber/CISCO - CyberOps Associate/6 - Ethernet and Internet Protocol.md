@@ -1,4 +1,15 @@
+# Ethernet
+
+
+
+![[Pasted image 20250314084243.png]]
+
+
 ![[Pasted image 20250214090014.png]]
+
+***
+# IP 
+
 
 These are the basic characteristics of IP:
 - **Connectionless** - There is no connection with the destination established before sending data packets.

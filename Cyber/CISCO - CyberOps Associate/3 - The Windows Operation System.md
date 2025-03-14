@@ -15,6 +15,8 @@ In contrast to BIOS firmware, UEFI firmware has a lot of visibility into the boo
 
 ![[Pasted image 20250213140854.png]]
 
+![[Pasted image 20250313100225.png]]
+
 | **Registry Hive**              | **Description**                                                                                                                                                                                         |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **HKEY_CURRENT_USER (HKCU)**   | Holds information concerning the currently logged in user.                                                                                                                                              |

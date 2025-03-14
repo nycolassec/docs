@@ -4,7 +4,7 @@
   "vimMode": false,
   "showLineNumber": false,
   "rightToLeft": false,
-  "showIndentGuide": false,
+  "showIndentGuide": true,
   "pdfExportSettings": {
     "includeName": true,
     "pageSize": "A4",
@@ -12,7 +12,7 @@
     "margin": "2",
     "downscalePercent": 90
   },
-  "readableLineLength": false,
+  "readableLineLength": true,
   "strictLineBreaks": false,
   "foldHeading": true
 }
