@@ -68,6 +68,90 @@ index=main earliest=1690290814 latest=1690291207 EventCode IN (4648)
 ***
 #### Detecting Kerberoasting/AS-REProasting
 
+**Benign TGS Requests**
+```
+index=main earliest=1690388417 latest=1690388630 EventCode=4648 OR (EventCode=4769 AND service_name=iis_svc) 
+| dedup RecordNumber 
+| rex field=user "(?<username>[^@]+)"
+| table _time, ComputerName, EventCode, name, username, Account_Name, Account_Domain, src_ip, service_name, Ticket_Options, Ticket_Encryption_Type, Target_Server_Name, Additional_Information
+```
+- `| dedup RecordNumber`: Removes duplicate events based on the `RecordNumber` field.
+- `| rex field=user "(?<username>[^@]+)"`: Extracts the `username` portion of the `user` field using a regular expression and stores it in a new field called `username`.
+
+**Detecting Kerberoasting - SPN Querying**
+```
+index=main earliest=1690448444 latest=1690454437 source="WinEventLog:SilkService-Log" 
+| spath input=Message 
+| rename XmlEventData.* as * 
+| table _time, ComputerName, ProcessName, DistinguishedName, SearchFilter 
+| search SearchFilter="*(&(samAccountType=805306368)(servicePrincipalName=*)*"
+```
+ 
+ **Detecting Kerberoasting - TGS Requests**
+```shell-session
+index=main earliest=1690450374 latest=1690450483 EventCode=4648 OR (EventCode=4769 AND service_name=iis_svc)
+| dedup RecordNumber
+| rex field=user "(?<username>[^@]+)"
+| bin span=2m _time 
+| search username!=*$ 
+| stats values(EventCode) as Events, values(service_name) as service_name, values(Additional_Information) as Additional_Information, values(Target_Server_Name) as Target_Server_Name by _time, username
+| where !match(Events,"4648")
+```
+- `| dedup RecordNumber`: Removes duplicate events based on the `RecordNumber` field.
+- `| rex field=user "(?<username>[^@]+)"`: Extracts the `username` portion of the `user` field using a regular expression and stores it in a new field called `username`.
+- `| search username!=*$`: Filters out events where the `username` field ends with a `$`.
+- `| where !match(Events,"4648")`: Filters out events that have the value `4648` in the Events field.
+
+**Detecting Kerberoasting Using Transactions - TGS Requests**
+```
+index=main earliest=1690450374 latest=1690450483 EventCode=4648 OR (EventCode=4769 AND service_name=iis_svc)
+| dedup RecordNumber
+| rex field=user "(?<username>[^@]+)"
+| search username!=*$ 
+| transaction username keepevicted=true maxspan=5s endswith=(EventCode=4648) startswith=(EventCode=4769) 
+| where closed_txn=0 AND EventCode = 4769
+| table _time, EventCode, service_name, username
+```
+- **`| transaction username keepevicted=true maxspan=5s endswith=(EventCode=4648) startswith=(EventCode=4769)`**: Groups events into `transactions` based on the `username` field.
+	- **`keepevicted=true`** option includes events that do not meet the transaction criteria.
+	- **`maxspan=5s`** option sets the maximum time duration of a transaction to 5 seconds.
+	- **`endswith=(EventCode=4648)`** and **`startswith=(EventCode=4769)`** options specify that transactions should start with an event with `EventCode 4769` and end with an event with `EventCode 4648`.
+- **`| where closed_txn=0 AND EventCode = 4769`**: Filters the results to only include transactions that are not closed (`closed_txn=0`) and have an `EventCode` of `4769`.
+- **`| table _time, EventCode, service_name, username`**: Displays the remaining events in tabular format with the specified fields.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
