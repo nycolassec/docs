@@ -119,6 +119,7 @@ index=main earliest=1690450374 latest=1690450483 EventCode=4648 OR (EventCode=47
 - **`| where closed_txn=0 AND EventCode = 4769`**: Filters the results to only include transactions that are not closed (`closed_txn=0`) and have an `EventCode` of `4769`.
 - **`| table _time, EventCode, service_name, username`**: Displays the remaining events in tabular format with the specified fields.
 
+##### AS-REPRoasting
 
 
 

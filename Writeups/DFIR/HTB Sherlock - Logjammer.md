@@ -1,6 +1,6 @@
 #Difficult : Easy
 #Tools : EvtxECmd, Time Line Explorer
-## Parse
+#### Parse
 ![[Pasted image 20250317151144.png]]
 Os arquivos fornecidos são logs do sistema **Windows**, podemos analisa-los com o **Event Viewer** do Windows ou podemos usar alguma ferramenta externa, que nesse caso será **Time Line Explorer** do Eric Zimmerman.
 

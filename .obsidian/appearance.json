@@ -4,7 +4,7 @@
   "monospaceFontFamily": "Fira Code",
   "textFontFamily": "SF Pro Text",
   "baseFontSizeAction": true,
-  "baseFontSize": 20,
+  "baseFontSize": 19,
   "theme": "obsidian",
   "interfaceFontFamily": "SF Pro Text",
   "enabledCssSnippets": []

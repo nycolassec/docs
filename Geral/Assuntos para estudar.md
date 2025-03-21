@@ -15,8 +15,13 @@ VTEPs
 - [ ] Cassandra
 - [ ] NGINX
 - [ ] REDIS
+- [ ] MySQL
+- [ ] SQLite
 
----
+# Windows
+Detecting Kerberoasting/AS-REProasting
+
+***
 Windows - Banco de dados SRUM
 Windows - LSASS
 Windows - USN Journal
@@ -36,11 +41,7 @@ https://pentestlab.blog/2017/06/07/uac-bypass-fodhelper/
 ---
 ## Cyber
 ---
-SANS triage
-Cyber - Kape
-Cyber - Autopsy
-Cyber - Chainsaw
-Cyber - PECmd
+
 Cyber - Yara
 Cyber - Volatility
 
