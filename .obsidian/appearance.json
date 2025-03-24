@@ -2,10 +2,10 @@
   "accentColor": "",
   "cssTheme": "Catppuccin",
   "monospaceFontFamily": "Fira Code",
-  "textFontFamily": "SF Pro Text",
+  "textFontFamily": "Inter",
   "baseFontSizeAction": true,
   "baseFontSize": 19,
   "theme": "obsidian",
-  "interfaceFontFamily": "SF Pro Text",
+  "interfaceFontFamily": "Inter",
   "enabledCssSnippets": []
 }
