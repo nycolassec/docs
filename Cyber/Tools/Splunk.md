@@ -120,6 +120,178 @@ index=main earliest=1690450374 latest=1690450483 EventCode=4648 OR (EventCode=47
 - **`| table _time, EventCode, service_name, username`**: Displays the remaining events in tabular format with the specified fields.
 
 ##### AS-REPRoasting
+**Detecting AS-REPRoasting - Querying Accounts With Pre-Auth Disabled**
+**Timeframe**: `earliest=1690392745 latest=1690393283`
+```
+index=main earliest=1690392745 latest=1690393283 source="WinEventLog:SilkService-Log" 
+| spath input=Message 
+| rename XmlEventData.* as * 
+| table _time, ComputerName, ProcessName, DistinguishedName, SearchFilter 
+| search SearchFilter="*(samAccountType=805306368)(userAccountControl:1.2.840.113556.1.4.803:=4194304)*"
+```
+
+**Detecting AS-REPRoasting - TGT Requests For Accounts With Pre-Auth Disabled**
+**Timeframe**: `earliest=1690392745 latest=1690393283`
+```shell-session
+index=main earliest=1690392745 latest=1690393283 source="WinEventLog:Security" EventCode=4768 Pre_Authentication_Type=0
+| rex field=src_ip "(\:\:ffff\:)?(?<src_ip>[0-9\.]+)"
+| table _time, src_ip, user, Pre_Authentication_Type, Ticket_Options, Ticket_Encryption_Type
+```
+- **`| rex field=src_ip "(\:\:ffff\:)?(?<src_ip>[0-9\.]+)"`** : Uses a regular expression to extract the `src_ip` (source IP address) field.
+- **`| table _time, src_ip, user, Pre_Authentication_Type, Ticket_Options, Ticket_Encryption_Type`** :  Displays the remaining events in tabular format with the specified fields.
+***
+### Detecting Pass-the-Hash
+**Detecting Pass-the-Hash With Splunk**
+Before we move on to reviewing the searches, please consult [this](https://blog.netwrix.com/2021/11/30/how-to-detect-pass-the-hash-attacks) source to gain a better understanding of where the search part `Logon_Process=seclogo` originated from.
+**Timeframe**: `earliest=1690450689 latest=1690451116`
+```
+index=main earliest=1690450708 latest=1690451116 source="WinEventLog:Security" EventCode=4624 Logon_Type=9 Logon_Process=seclogo
+| table _time, ComputerName, EventCode, user, Network_Account_Domain, Network_Account_Name, Logon_Type, Logon_Process
+```
+As already mentioned, we can enhance the search above by adding LSASS memory access to the mix as follows.
+
+```
+index=main earliest=1690450689 latest=1690451116 (source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=10 TargetImage="C:\\Windows\\system32\\lsass.exe" SourceImage!="C:\\ProgramData\\Microsoft\\Windows Defender\\platform\\*\\MsMpEng.exe") OR (source="WinEventLog:Security" EventCode=4624 Logon_Type=9 Logon_Process=seclogo)
+| sort _time, RecordNumber
+| transaction host maxspan=1m endswith=(EventCode=4624) startswith=(EventCode=10)
+| stats count by _time, Computer, SourceImage, SourceProcessId, Network_Account_Domain, Network_Account_Name, Logon_Type, Logon_Process
+| fields - count
+```
+- **`| transaction host maxspan=1m endswith=(EventCode=4624) startswith=(EventCode=10)`** : Groups related events based on the `host` field, with a maximum time span of `1` minute between the start and end events. This command is used to associate process access events targeting `lsass.exe` with remote logon events.
+- **`| fields - count`** : Removes the `count` field from the results.
+***
+### Detecting Pass-the-Ticket
+**Timeframe**: `earliest=1690451665 latest=1690451745`
+```
+index=main earliest=1690392405 latest=1690451745 source="WinEventLog:Security" user!=*$ EventCode IN (4768,4769,4770) 
+| rex field=user "(?<username>[^@]+)"
+| rex field=src_ip "(\:\:ffff\:)?(?<src_ip_4>[0-9\.]+)"
+| transaction username, src_ip_4 maxspan=10h keepevicted=true startswith=(EventCode=4768)
+| where closed_txn=0
+| search NOT user="*$@*"
+| table _time, ComputerName, username, src_ip_4, service_name, category
+```
+- **`| rex field=user "(?<username>[^@]+)"`** : This command extracts the `username` from the `user` field using a regular expression. It assigns the extracted value to a new field called `username`.
+- **`| rex field=src_ip "(\:\:ffff\:)?(?<src_ip_4>[0-9\.]+)"`** : This command extracts the IPv4 address from the `src_ip` field, even if it's originally recorded as an IPv6 address. It assigns the extracted value to a new field called `src_ip_4`.
+- **`| transaction username, src_ip_4 maxspan=10h keepevicted=true startswith=(EventCode=4768)`** : This command groups events into transactions based on the `username` and `src_ip_4` fields. A transaction begins with an event that has an `EventCode` of `4768`. The `maxspan=10h` parameter sets a maximum duration of `10` hours for a transaction. The `keepevicted=true` parameter ensures that open transactions without an ending event are included in the results.
+***
+### Detecting Overpass-the-Hash
+```
+index=main earliest=1690443407 latest=1690443544 source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" (EventCode=3 dest_port=88 Image!=*lsass.exe) OR EventCode=1
+| eventstats values(process) as process by process_id
+| where EventCode=3
+| stats count by _time, Computer, dest_ip, dest_port, Image, process
+| fields - count
+```
+***
+### Detecting Golden Tickets/Silver Tickets
+**Detecting Golden Tickets With Splunk (Yet Another Ticket To Be Passed Approach)**
+**Timeframe**: `earliest=1690451977 latest=1690452262`
+```
+index=main earliest=1690451977 latest=1690452262 source="WinEventLog:Security" user!=*$ EventCode IN (4768,4769,4770) 
+| rex field=user "(?<username>[^@]+)"
+| rex field=src_ip "(\:\:ffff\:)?(?<src_ip_4>[0-9\.]+)"
+| transaction username, src_ip_4 maxspan=10h keepevicted=true startswith=(EventCode=4768)
+| where closed_txn=0
+| search NOT user="*$@*"
+| table _time, ComputerName, username, src_ip_4, service_name, category
+```
+
+**Detecting Silver Tickets With Splunk Through User Correlation**
+Let's first create a list of users (`users.csv`) leveraging `Event ID 4720 (A user account was created)` as follows
+
+```
+index=main latest=1690448444 EventCode=4720
+| stats min(_time) as _time, values(EventCode) as EventCode by user
+| outputlookup users.csv
+```
+
+Let's now compare the list above with logged-in users as follows.
+**Timeframe**: `latest=1690545656`
+```
+index=main latest=1690545656 EventCode=4624
+| stats min(_time) as firstTime, values(ComputerName) as ComputerName, values(EventCode) as EventCode by user
+| eval last24h = 1690451977
+| where firstTime > last24h
+```| eval last24h=relative_time(now(),"-24h@h")```
+| convert ctime(firstTime)
+| convert ctime(last24h)
+| lookup users.csv user as user OUTPUT EventCode as Events
+| where isnull(Events)
+```
+- **`| lookup users.csv user as user OUTPUT EventCode as Events`** : This command performs a `lookup` using the `users.csv` file, matches the `user` field from the search results with the `user` field in the CSV file, and outputs the `EventCode` column from the CSV file as a new field called `Events`.
+- **`| where isnull(Events)`** : This command filters the results to include only those where the `Events` field is null. This indicates that the user was not found in the `users.csv` file.
+
+**Detecting Silver Tickets With Splunk By Targeting Special Privileges Assigned To New Logon**
+**Timeframe**: `latest=1690545656`
+````
+index=main latest=1690545656 EventCode=4672
+| stats min(_time) as firstTime, values(ComputerName) as ComputerName by Account_Name
+| eval last24h = 1690451977 
+```| eval last24h=relative_time(now(),"-24h@h") ```
+| where firstTime > last24h 
+| table firstTime, ComputerName, Account_Name 
+| convert ctime(firstTime)
+````
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
