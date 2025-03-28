@@ -97,7 +97,6 @@ Então eu analisei até chegar em uma função ``javascript`` que insere um coma
 ![[Pasted image 20250321193959.png]]
 
 **Answer** : ``stageClipboard``
-
 ***
 
 ![[Pasted image 20250321194049.png]]

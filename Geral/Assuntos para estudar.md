@@ -17,6 +17,7 @@ VTEPs
 - [ ] REDIS
 - [ ] MySQL
 - [ ] SQLite
+- [ ] Gitea
 
 # Windows
 Detecting Kerberoasting/AS-REProasting

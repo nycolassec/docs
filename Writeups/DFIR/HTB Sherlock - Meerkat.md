@@ -1,5 +1,6 @@
 #Difficult : Easy
 #Tools : Wireshark, Tshark, PowerShell
+***
 #### Info
 ![[Pasted image 20250320132424.png]]
 Recebemos dois arquivos para fazer nossas investigações, um arquivo de alerta em formato json e um arquivo de tráfego de rede.

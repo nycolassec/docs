@@ -164,7 +164,6 @@ cat access.log | grep -E 'backup' | grep -E 'sql'
 ![[Pasted image 20250321173817.png]]
 
 **Answer** : 34707
-
 ***
 
 ![[Pasted image 20250321174332.png]]

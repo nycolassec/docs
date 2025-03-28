@@ -1,5 +1,6 @@
 #Difficult : Easy
 #Tools : EvtxECmd, Time Line Explorer
+***
 #### Parse
 ![[Pasted image 20250317151144.png]]
 Os arquivos fornecidos são logs do sistema **Windows**, podemos analisa-los com o **Event Viewer** do Windows ou podemos usar alguma ferramenta externa, que nesse caso será **Time Line Explorer** do Eric Zimmerman.
@@ -104,85 +105,8 @@ Aqui podemos filtrar pelo ID de evento **104**(Indica a limpeza dos logs de audi
 ![[Pasted image 20250318085059.png]]
 
 **Answer:** Microsoft-Windows-Windows Firewall With Advanced Security/Firewall
-
 ***
 
 ![[Pasted image 20250318085655.png]]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
