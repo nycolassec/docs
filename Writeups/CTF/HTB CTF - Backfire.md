@@ -1,6 +1,5 @@
 # Info
 #Difficult : Medium
-#Tools : Nmap, nc, Python3
 #IP_Alvo : 10.10.11.49
 #IP_Atacante : 10.10.15.28
 ***
@@ -77,9 +76,8 @@ E então podemos executar nosso exploit. o `ip` e a `port` devem ser os que est�
 ```
 python3 ./exploit.py -t https://10.10.11.49 -i 127.0.0.1 -p 40056
 ```
-
 ![[Pasted image 20250325092251.png]]
-**E estamos dentro !!!**
+**Entramos!**
 
 Podemos então pegar a flag de usuário.
 ![[Pasted image 20250325104219.png]]
@@ -222,6 +220,6 @@ sudo /usr/sbin/iptables-save -f /root/.ssh/authorized_keys
 Após ter adicionado, podemos fazer ``ssh`` para a conta de ``root`` e pegar a flag de `root`.
 ![[Pasted image 20250325103629.png]]
 **Owned !!!**
-
 ***
+
 ![[Pasted image 20250325104558.png]]
