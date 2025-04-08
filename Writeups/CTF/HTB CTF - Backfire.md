@@ -1,7 +1,6 @@
 # Info
 #Difficult : Medium
-#IP_Alvo : 10.10.11.49
-#IP_Atacante : 10.10.15.28
+#OS : Linux
 ***
 # Port Scanning
 Com sempre começo escaneando o host para ter uma noção dos serviços rodando na máquina alvo.
