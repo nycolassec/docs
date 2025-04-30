@@ -6,7 +6,8 @@ Com sempre começo escaneando o host para ter uma noção dos serviços rodando 
 ```sh
 nmap 10.10.11.49 -Pn -sC -sV -A -oN nmap_output
 ```
-![[Pasted image 20250325080228.png]]
+![nmap](../images/HTB_CTF_Backfire/backfire-00.png)
+
 Algumas portas estão abertas com `22`, `443`, `5000` e `8000`, mas a que me interessou foi a `8000`, no qual o Nmap identificou dois arquivos. Podemos abrir essa porta para dar uma olhada.
 
 Podemos baixar esses dois arquivos e olharmos eles.

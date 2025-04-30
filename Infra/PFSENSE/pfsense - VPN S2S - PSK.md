@@ -108,6 +108,7 @@ Então podemos nos conectar.
 ***
 ***
 
+Após essas configurações, podemos Criar as regras para `IPSEC`
 
 
 
