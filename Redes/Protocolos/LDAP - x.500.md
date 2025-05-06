@@ -3,7 +3,7 @@
 ---
 LDAP ( **L**ightweight **D**irectory **A**ccess **P**rotocol ) é um protocolo de acesso e gerenciamento de informações em um **serviço/estrutura** de diretório (como o **x.500**). Muito usado para autenticação, autorização e armazenar informação sobre usuários, grupos e outros recursos de rede, como impressoras e servidores.
 
-Então em resumo o LDAP seria o **x.500 + TCP/IP**, pois o x.500 só podia ser acessado localmente mas com o LDAP podemos utiliza-lo em uma rede TCP/IP, então o LDAP serve como um banco de dados para consultar e armazenar informações organizadas hierarquicamente no padrão **x.500**.
+Então em resumo o LDAP seria o **x.500 + TCP/IP**, pois o x.500 só podia ser acessado localmente mas com o LDAP podemos utiliza-lo em uma rede TCP/IP, outra forma de definir é de que o LDAP serve como um banco de dados para consultar e armazenar informações organizadas hierarquicamente no padrão **x.500**.
 
 ==O LDAP é definido pela RFC 4519.==
 
@@ -40,7 +40,7 @@ Como o **PosixAccount** que é um **ObjectClass** que traz vários atributos par
 ## Processo
 ---
 ![[Redes-Protocolos-Processo-LDAP.png]]
-Como o **LDAP** é um protocolo de pesquisa e não de autenticação usamos a **libpam** e a **libnss** para fazer essa interpretação com os dados buscados pelo ldap. 
+Como o **LDAP** é um protocolo de pesquisa e não de autenticação, no linux usamos a **libpam** e a **libnss** para fazer essa interpretação com os dados buscados pelo ldap. 
 - **libpam** - Essa biblioteca implementa o framework PAM( Pluggable Authentication Modules), que é uma arquitetura modular para a autenticação de usuários. Com ele podemos configurar em um único arquivo para usar diferentes métodos de autenticação (login, ssh, sudo e etc) em vez de configurar cada um manualmente.
 - **libnss** - Essa biblioteca implementa o NSS (Name Service Switch),que fornece um mecanismo para acessar várias fontes de informações de rede, como a resolução de nomes de host, informações sobre usuários, grupos e outros dados relacionados ao sistema, em um formato uniforme.
 

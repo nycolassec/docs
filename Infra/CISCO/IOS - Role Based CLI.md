@@ -32,7 +32,31 @@ Router(config-view)# commands parser-mode {include | include-exclusive | exclude
 **`include-exclusive`** : Adds to the view and excludes the same interface or command from bring added to all others views
 **`exclude`** :  Excludes a command or an interface from the view
 **`all`** : A "Wilcard" that allows
-
+***
+#### Superviews
+```
+R1(config)# parser view USER superview
+R1(config-view)# secret cisco
+R1(config-view)# view SHOWVIEW
+R1(config-view)# exit
+R1(config)#    
+R1(config)# parser view SUPPORT superview
+R1(config-view)# secret cisco1
+R1(config-view)# view SHOWVIE
+% Invalid view name SHOWVIE
+ 
+R1(config-view)# view SHOWVIEW
+R1(config-view)# view VERIFYVIEW
+R1(config-view)# exit
+R1(config)#    
+R1(config)# parser view JR-ADMIN superview
+R1(config-view)# secret cisco2
+R1(config-view)# view SHOWVIEW
+R1(config-view)# view VERIFYVIEW
+R1(config-view)# view REBOOTVIEW
+R1(config-view)# exit
+R1(config)#
+```
 
 
 
