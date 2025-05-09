@@ -2,9 +2,9 @@
   "accentColor": "",
   "cssTheme": "Dracula Official",
   "monospaceFontFamily": "Fira Code",
-  "textFontFamily": "SF Pro Text",
+  "textFontFamily": "Inter",
   "baseFontSizeAction": true,
-  "baseFontSize": 18,
+  "baseFontSize": 20,
   "theme": "obsidian",
   "interfaceFontFamily": "Inter",
   "enabledCssSnippets": []

@@ -1,6 +1,6 @@
 ## Info
 ![images](./images/vpn-s2s-cisco-router.png)
-A interface virtual será endereçada na rede `10.0.30.0/255`. Não há a necessidade de pré-definir as rotas para as redes internas, pois elas serão definidas a partir do túnel.
+A interface virtual será endereçada na rede `10.0.30.0/30`. Não há a necessidade de pré-definir as rotas para as redes internas, pois elas serão definidas a partir do túnel.
 ***
 ## SITE_A
 #### Configuração ``IKEv2`` (**Phase 1**)
@@ -26,7 +26,7 @@ Agora criamos a chave pré-compartilhada (`keyring`).
 crypto ikev2 keyring VPN-KEYRING
 	peer SITE-B
 		address 172.16.20.1
-		pre-shared-key cisco12345
+		pre-shared-key SeletivaNacional
 		exit
 	exit
 ```
@@ -88,7 +88,7 @@ crypto ikev2 policy IKEv2-POLICY
 crypto ikev2 keyring VPN-KEYRING
 	peer SITE-A
 		address 172.16.10.1
-		pre-shared-key cisco12345
+		pre-shared-key SeletivaNacional
 		exit
 	exit
 
