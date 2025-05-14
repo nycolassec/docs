@@ -4,7 +4,7 @@
   "monospaceFontFamily": "Fira Code",
   "textFontFamily": "Inter",
   "baseFontSizeAction": true,
-  "baseFontSize": 20,
+  "baseFontSize": 18,
   "theme": "obsidian",
   "interfaceFontFamily": "Inter",
   "enabledCssSnippets": []

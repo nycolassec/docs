@@ -55,7 +55,7 @@ Selecionamos `IP and Domain Restrictions` e `Open features`.
 Então criamos nossas regras de acordo com o necessitado
 ![[Pasted image 20250430153331.png]]
 
-Em `Edit Feature Settings...` para negar o acesso caso não exista uma regra para um determinado `IP`.
+Em `Edit Feature Settings...` definimos para negar o acesso caso não exista uma regra para um determinado `IP`.
 ![[Pasted image 20250430153520.png]]
 
 
