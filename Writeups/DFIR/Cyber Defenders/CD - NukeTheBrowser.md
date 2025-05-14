@@ -1,5 +1,4 @@
-#Difficult : Hard
-#Category  : Network Forensics
+#Difficult : Hard #Category : Network Forensics
 ***
 #### 1 - Multiple systems were targeted. Provide the IP address of the highest one.
 Podemos obter essa reposta em **Statistics -> Conversations -> IPv4**, e observar o `IP` mais alto que inicia a conversa.
