@@ -9,7 +9,6 @@ exiftool ./free_decryption.xlsm
 
 Vemos que ele tem uma macro, vamos então abrir o documento para ver seu conteúdo. Ao abrir no `wpsoffice` temos o seguinte resultado.
 ![[Pasted image 20250513110413.png]]
-
 #### Code analysis
 Embora eu não saiba exatamente o que cada linha faz, podemos tentar descobrir a intenção do script.
 ```sh
@@ -28,7 +27,6 @@ HALT()
 ```
 
 Primeiro ele seleciona as células que contém os números, depois pede para a Kernel alocar um espaço de memória. Após isso ele vai fazendo uma iteração  de 2 em 2 nos valores das células e fazendo um `bitXOR` entre a célula selecionada e `24` e então adiciona esse valor a memória. Podemos fazer o mesmo processo para ver qual binário se origina.
-
 #### flag
 Primeiro precisamos tratar o os números, colocando todos na mesma linha separadas por vírgula, utilizei o `neovim` para isso.
 ```nvim
