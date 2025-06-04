@@ -40,3 +40,9 @@ w32tm /query /status
 # Força a sincronização
 w32tm /resync
 ```
+***
+###### Control Panel
+**User Configuration** > **Policies** > **Administrative Templates** > **Control Panel** :
+***
+###### Registry
+User Configuration > Administrative Templates > System > Prevent Access to registry editing tools

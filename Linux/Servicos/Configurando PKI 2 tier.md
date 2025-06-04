@@ -286,7 +286,7 @@ chmod 400 intermediate/private/intermediate.key.pem
 Use a chave intermediária para criar uma solicitação de assinatura de certificado (CSR). Os detalhes devem geralmente corresponder à CA raiz. O **Common Name** , no entanto, deve ser diferente.
 
 > Devemos especificar o arquivo de configuração **intermediate/openssl.cnf**
-> 
+
 
 ```bash
 cd /root/ca
@@ -417,3 +417,4 @@ openssl pkcs12 -export  -out intermediate/certs/client.full.pfx \
 -inkey intermediate/private/client.key.pem -in intermediate/certs/client.cert.pem \
 -certfile intermediate/certs/intermediate.cert.pem -certfile certs/ca.cert.pem
 ```
+

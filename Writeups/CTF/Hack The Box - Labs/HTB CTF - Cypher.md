@@ -110,7 +110,7 @@ Primeiro fiz uma leitura do menu de ajuda do binário.
 ```bash
 sudo /usr/local/bin/bbot -h
 ```
-![[Pasted image 20250414174006.png]]
+ 
 
 Podemos colocar como entrada um arquivo que irá servir de `regras yara`. E então abrir o modo de depuração para vermos esse arquivo.
 ![[Pasted image 20250414174206.png]]
