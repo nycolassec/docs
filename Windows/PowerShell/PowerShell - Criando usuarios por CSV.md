@@ -99,3 +99,6 @@ Import-Csv nomes.csv |
       -ProfilePath "\\server2\profiles\wsc" 
       -ScriptPath "logon.vbs"
 ```
+
+***
+$$\#54 : Nycolas Ramos$$

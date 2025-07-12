@@ -127,5 +127,6 @@ Rota para a rede remota interna.
 ip route 10.0.10.0 255.255.255.0 Tunnel 10
 ```
 ***
-
 A partir de agora os hosts das duas redes podem se comunicar de forma criptografada e segura.
+***
+$$\#54 : Nycolas Ramos$$

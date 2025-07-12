@@ -18,7 +18,7 @@ Cada frame tem basicamente 3 partes :
 O Frame Ethernet tem o mínimo de 64 bytes e um máximo de 1518 bytes. Não incluímos o campo de preâmbulo na contagem do tamanho do Frame. Frames menores do que 64 bits são considerados fragmento de colisão e frames maiores do que 1500 bytes de dados são considerados "jumbo" ou "baby giant frames". Se o frame for menor do que o mínimo e maior do que o máximo, o pacote é descartado.
 ### Campos do Frame Ethernet
 
-![fe](../Images/Redes-Protocolos-Campos-Ethernet.png)
+![fe](Redes-Protocolos-Campos-Ethernet.png)
 
 | Field                                     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
