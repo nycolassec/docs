@@ -90,7 +90,7 @@ $ vim /etc/logrotate.d/limitar-logs
 ```
 
 ```sh
-Faça um teste **sem aplicar mudanças**:
+Faça um teste sem aplicar mudanças:
 $ logrotate /etc/logrotate.d/limitar-logs --debug
 
 Para aplicar manualmente:

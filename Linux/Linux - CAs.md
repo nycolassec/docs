@@ -1,8 +1,16 @@
+## Cenário
+Aqui irei cobrir um cenário básico mas comumente cobrado no contexto de PKI.
+**RootCA** : Será usada apenas para assinar a **SubCA**.
+**SubCA** : Será usada para assinar os certificados finais.
 ## Root CA
-Esta configuração irá cobrir somente o necessário para uma CA utilizável. Aqui será definido 3 extensões, uma para a CA uma para certificado de Server e uma para certificado de Client.
+Após criarmos o diretório `/pki/root` podemos usar como modelo uma configuração já existente no sistema. 
 ```sh
-$ mkdir /root/pki/ && cd /root/pki/
+$ mkdir -p /pki/root && cd /pki/root
+$ cat /etc/ssl/openssl.cnf | grep '=\|\[\|^$' > openssl.cnf
+```
 
+Agora editamos de acordo com o que precisamos.
+```sh
 $ vim openssl.cnf
 [ ca ]
 default_ca      = CA_default            # The default ca section
