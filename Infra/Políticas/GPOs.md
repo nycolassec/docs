@@ -45,4 +45,7 @@ w32tm /resync
 **User Configuration** > **Policies** > **Administrative Templates** > **Control Panel** :
 ***
 ###### Registry
-User Configuration > Administrative Templates > System > Prevent Access to registry editing tools
+**User Configuration** > **Administrative Templates** > **System** > **Prevent Access to registry editing tools**
+***
+###### Disable Guest account
+**Computer Configuration** > **Policies** > **Windows Settings** > **Security Setting**s > **Local Policies** > **Security Options**

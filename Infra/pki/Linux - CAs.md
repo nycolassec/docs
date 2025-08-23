@@ -129,7 +129,6 @@ emailAddress            = optional
 default_bits            = 4096
 distinguished_name      = req_distinguished_name
 string_mask             = utf8only
-# req_extensions        = v3_req # The extensions to add to a certificate request
 # x509_extensions       = v3_ca # Extension to add when the -x509 option is used
 default_md              = sha256
 

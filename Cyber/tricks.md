@@ -50,14 +50,35 @@ $ openssl x509 -in server.csr -out server.crt -req -signkey server.key -extfile 
 $ openssl x509 -noout -modulus -in /etc/ssl/ldap/ldap.crt | openssl md5 openssl rsa -noout -modulus -in /etc/ssl/ldap/ldap.key | openssl md5
 ```
 
+#### Parar sincronização de horário e sincronizar manualmente
+```sh
+# Parar serviço de tempo temporariamente
+sudo systemctl stop systemd-timesyncd
 
+# Forçar sincronização com o DC
+sudo ntpdate -b voleur.htb
+```
 
+#### Kerberos
+```sh
+# Definir o realm e KDC via variáveis de ambiente
+export KRB5_REALM=VOLEUR.HTB
+export KRB5_KDC=dc.voleur.htb
 
+# Especificar o cache do ticket
+export KRB5CCNAME=$(pwd)/svc_winrm.ccache
+
+# Tentar novamente com evil-winrm
+evil-winrm -i dc.voleur.htb -u 'svc_winrm' -k -r 'voleur.htb'
+```
 openssl s_client -showcerts -connect 10.0.10.10:443
 
 
 
-
+#### ver chave publica
+```sh
+ssh-keygen -y -f ./id_rsa
+```
 
 
 
