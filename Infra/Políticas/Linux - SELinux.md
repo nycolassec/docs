@@ -81,4 +81,12 @@ $ grep avc /var/log/audit/audit.log
 $ grep "SELinux is preventing" /var/log/messages
 ```
 ***
+#### Permissões
+###### Reverse Proxy
+
+```sh
+$ setsebool -P httpd_can_network_connect 1
+```
+
+***
 $$\#54 : Nycolas Ramos$$

@@ -50,7 +50,7 @@ WorldSkills.
 Somente usuários autorizados.
 ```
 #### Faillock
-Configurar uma política de bloqueio de conta para bloquear contas após 3 tentativas de login malsucedidas por uma duração de 25 minutos.
+Configurar uma política de bloqueio de conta para bloquear contas após 3 tentativas de login malsucedidas numa duração de 15min por uma duração de 25 min.
 ```sh
 $ vim /etc/security/faillock.conf
 deny = 3

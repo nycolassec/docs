@@ -1,0 +1,1 @@
+From windows Vista and later the recycler path was renamed as `C:\$Recycle.Bin\SID*\$I` and `C:\$Recyecle.Bin\SID*\$R` where `$I` contains meta data of the deleted file and `$R` contains actual deleted file

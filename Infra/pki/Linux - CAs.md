@@ -113,6 +113,7 @@ default_crl_days= 30                    # how long before next CRL
 default_md      = sha256                # use SHA-256 by default
 preserve        = no                    # keep passed DN ordering
 
+# copy_extensions = copy # Manter as extensões da CSR
 policy          = policy_loose
 
 [ policy_loose ]
@@ -130,6 +131,7 @@ default_bits            = 4096
 distinguished_name      = req_distinguished_name
 string_mask             = utf8only
 # x509_extensions       = v3_ca # Extension to add when the -x509 option is used
+req_extensions          = v3_req # The extensions to add to a certificate request
 default_md              = sha256
 
 [ req_distinguished_name ]
@@ -141,11 +143,11 @@ organizationalUnitName          = Organizational Unit Name (eg, section)
 commonName                      = Common Name (eg, your name or your server\'s hostname)
 
 
-##### ROOT ann SUB Cert #####
+##### CSR and SUB Cert #####
 [ v3_req ]
 subjectKeyIdentifier    = hash
-basicConstraints        = CA:true
-keyUsage                = digitalSignature,cRLSign,keyCertSign
+basicConstraints        = critical,CA:true,pathlen:0
+keyUsage                = critical,digitalSignature,cRLSign,keyCertSign
 
 [ v3_sub_ca ]
 subjectKeyIdentifier    = hash
@@ -191,7 +193,7 @@ echo 1000 > crlnumber
 $ openssl genrsa -aes256 -out ./private/sub-ca.wsc.local.key.pem 4096
 
 # CSR
-$ openssl req -config ./openssl.cnf -new -sha256 \
+$ openssl req -new -config ./openssl.cnf -sha256 \
   -key ./private/sub-ca.wsc.local.key.pem \
   -out ../root/csr/sub-ca.wsc.local.csr.pem
 
@@ -280,6 +282,9 @@ $ openssl req -newkey rsa:2048 -nodes -keyout server.key -out server.csr \
   -subj "/C=BR/ST=SaoPaulo/L=SaoPaulo/O=MyOrg/CN=meuservidor.com" \
   -addext "subjectAltName=DNS:server.wsc.local,IP:192.168.1.100"
 ```
+
+>[!warning] copy_extensions
+>Caso a diretiva `subjectAltName` seja retirada, devemos colocar  a diretiva `copy_extensions = copy` na seção `[ CA_default ]` para que as extensões presentes na `csr` sejam preservadas já que não vamos passa-las no arquivo de configuração.
 #### Adicionar **Subject Alternative Names** no comando
 Se tivermos que assinar uma variedade de certificados, cada um com um SAN diferente, podemos usar o parâmetro `-addext`. Caso usemos assim não precisamos passa a diretiva `subjectAltName` e por consequência nem a seção `alt_names_server`.
 ```sh
@@ -288,6 +293,27 @@ $ openssl req -newkey rsa:4096 -sha256 -nodes \
   -subj "/C=BR/ST=DF/L=Brasilia/O=WSC/OU=TI/CN=server.wsc.local" \
   -addext "subjectAltName = DNS:server.wsc.local, DNS:www.wsc.local, IP:10.0.10.5"
 ```
+#### Criar pacote de certificados p7b
+```sh
+# Primeiro adicionamos todos os certificados em um único arquivo
+$ cat server.cert.pem intermediate.cert.pem root.cert.pem > full_chain.cert.pem
+
+# Agora criamos o pacote com toda a cadeia de certificados
+$ openssl crl2pkcs7 -nocrl -certfile ./full_cert.pem -out ./full_chain.p7b
+```
+#### Criar pacote de certificados pkcs12
+```sh
+# Podemos especificar cada certificado como parâmetro -in
+$ openssl pkcs12 -export -out full_chain.pfx -inkey server.key.pem \
+  -in server.cert.pem \
+  -in intermediate.cert.pem \
+  -in root.cert.pem
+
+# Ou podemos especificar um arquivo que contenha todos os certificados
+$ cat server.cert.pem intermediate.cert.pem root.cert.pem > full_chain.cert.pem
+$ openssl pkcs12 -export -out full_chain.pfx -inkey server.key.pem -in full_chain.cert.pem
+```
+
 ---
 ## Certificado auto assinado
 Por vezes teremos de criar cerificados auto assinados para testes, podemos então cria-lo de forma simples.

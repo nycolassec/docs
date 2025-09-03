@@ -4,17 +4,20 @@
 $ vim /etc/sysctl.conf
 net.ipv4.ip_forward = 1
 
+# Aplicar as mudanças
+$ sysctl -p
+
 # Habilitamos de forma temporária (até a reinicialização)
 $ sysctl -w net.ipv4.ip_forward=1
 ```
 #### Regras NAT
 ```sh
 # Adicionamos a interface a zona
-$ firewall-cmd --zone=trusted  --add-interface=eth1 --permanent
+$ firewall-cmd --zone=internal  --add-interface=eth1 --permanent
 
 # Configuramos a interface externa
 $ firewall-cmd --zone=external --add-interface=eth0 --permanent
-$ firewall-cmd --zone=external --add-forward --permanent
+# $ firewall-cmd --zone=external --add-forward --permanent
 $ firewall-cmd --zone=external --add-masquerade --permanent
 $ firewall-cmd --reload
 ```

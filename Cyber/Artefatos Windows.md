@@ -1,0 +1,93 @@
+## GPO
+Basicamente o Active Directory tem uma política que armazena a senha criptografada em uma GPO, mas a chave da criptografia foi disponibilizada publicamente, então para quebrarmos só precisamos da política.
+
+```sh
+$ impacket-Get-GPPPassword LOCAL -xmlfile ./{B6EF39A3-E84F-4C1D-A032-00F042BE99B5}/Machine/Preferences/Groups/Groups.xml
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies
+
+[*] Found a Groups XML file:
+[*]   file      : ./{B6EF39A3-E84F-4C1D-A032-00F042BE99B5}/Machine/Preferences/Groups/Groups.xml
+[*]   newName   :
+[*]   userName  : Backup
+[*]   password  : DUCTF{D0n7_Us3_P4s5w0rds_1n_Gr0up_P0l1cy}
+[*]   changed   : 2024-06-12 14:26:50
+
+```
+
+Usamos LOCAL pois temos o arquivo na nossa máquina, caso fosse um host remoto deveríamos usar o padrão : 
+`[[domain/]username[:password]@]<targetName or address>`
+***
+## SAM and SYSTEM
+Se houver alguma possibilidade de conseguirmos a chave de registro `SAM` e `SYSTEM`, podemos obter a hash dos usuários e tentar quebrar a senha por brute force.
+
+Seus respectivos caminhos no disco são:
+```
+C:\Windows\System32\config\SAM
+C:\Windows\System32\config\SYSTEM
+```
+
+Mas também podemos usar o utilitário `reg` para salvar essas chaves:
+```sh
+$ reg save HKLM\SAM sam.bak
+$ reg save HKLM\SYSTEM system.bak
+```
+
+Agora que temos as chaves podemos pegar as hashes armazenadas:
+```sh
+$ impacket-secretsdump -sam sam.bak -system system.bak LOCAL
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies
+
+[*] Target system bootKey: 0xa88f47504785ba029e8fa532c4c9e27b
+[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:476b4dddbbffde29e739b618580adb1e:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+[*] Cleaning up...
+
+```
+
+Após conseguirmos a hash da senha, podemos tentar quebrar por brute force.
+```sh
+$ hashcat -m 1000 '476b4dddbbffde29e739b618580adb1e' /usr/share/wordlists/rockyou.txt
+
+Dictionary cache hit:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344385
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+
+476b4dddbbffde29e739b618580adb1e:!checkerboard1
+```
+***
+## Arquivos baixados
+Há algumas formas de sabermos onde e de onde arquivos foram baixados. Navegadores costumam armazenar essas informações de forma bem detalhada. 
+#### Navegadores 
+##### Chrome:
+- Caminho do histórico: **`C:\Users\<usuário>\AppData\Local\Google\Chrome\User Data\Default\History`**
+- A tabela `downloads` e `urls` mostra as URLs e caminhos de arquivos baixados.
+##### Firefox:
+- Caminho:  **`C:\Users\<usuário>\AppData\Roaming\Mozilla\Firefox\Profiles\<perfil>\places.sqlite`**
+- Tabela relevante: `moz_places`
+##### Edge:
+- Caminho: **`C:\Users\<usuário>\AppData\Local\Microsoft\Edge\User Data\Default\History`**
+- A tabela `downloads` e `urls` mostra as URLs e caminhos de arquivos baixados.
+***
+## Criação de arquivos : $MFT
+O Windows armazena toda criação, modificação ou acesso a qualquer arquivo no arquivo `C:\$MFT`. Podemos utilizar o `MFTECmd.exe` do `EricZimmermanTools`.
+
+```sh
+$ MFTECmd.exe -f 'C:\Users\Administrator\Desktop\$MFT' --csv C:\Users\Administrator\Desktop\mft\ --scvf mft.csv
+```
+
+Após a conversão, podemos utilizar o `TimeLineExplorer` do `EricZimmermanTools` ou qualquer outro programa que leia `csv`.
+***
+## Outlook
+Arquivos `.ost/.pst`, no linux podemos utilizar o utilitário `pffexport` para retirar o conteúdo desses arquivos.
+```sh
+pffexport -v 'outlook.ost.dat'
+```
+***
+## Diversos
+###### ZIP Postal Code
+`AppData\Local\Google\Chrome\User Data\Default` and locate the `Web Data` file. Use a SQLite database viewer to open the `Web Data` file. Query from `autofill` table to find any stored ZIP codes.
+###### OST Files (Outlook)
+`[root]\Users\Karen\AppData\Local\Microsoft\Outlook\`
