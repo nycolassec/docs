@@ -11,14 +11,23 @@ $ sysctl -p
 $ sysctl -w net.ipv4.ip_forward=1
 ```
 #### Regras NAT
+Primeiro adicionamos a interface da rede interna a zona `trusted`.
 ```sh
-# Adicionamos a interface a zona
-$ firewall-cmd --zone=internal  --add-interface=eth1 --permanent
+$ firewall-cmd --zone=public  --change-interface=eth1 --permanent
+```
 
-# Configuramos a interface externa
-$ firewall-cmd --zone=external --add-interface=eth0 --permanent
-# $ firewall-cmd --zone=external --add-forward --permanent
+Agora adicionamos a interface externa a zona `external`.
+```sh
+# Adicionamos a zona
+$ firewall-cmd --zone=external --change-interface=eth0 --permanent
+
+# Adicionamos o forward
+$ firewall-cmd --zone=external --add-forward --permanent
+
+# Adicionamos o masquerade para nat, costuma ja vir habilitado
 $ firewall-cmd --zone=external --add-masquerade --permanent
+
+# Recarregamos as políticas
 $ firewall-cmd --reload
 ```
 #### Verificando as configurações
@@ -33,7 +42,7 @@ $ firewall-cmd --zone=external --query-masquerade
 Se quisermos que outras zonas também consigam ter acesso a esse roteamento, precisamos criar uma política.
 ```sh
 # Adicionamos a interface a zona interna
-$ firewall-cmd --zone=internal  --add-interface=eth1 --permanent
+$ firewall-cmd --zone=internal  --change-interface=eth1 --permanent
 
 # Configuramos a política para permitir a passagem do tráfego
 $ firewall-cmd --permanent --new-policy int-to-ext

@@ -17,33 +17,33 @@
 
 ***
 ## NTP
-- [ ] **LINSRV1** - Será o servidor NTP principal da topologia.
-- [ ] **FW2** - Irá sincronizar com **LINSRV1**.
-- [ ] **FW1**,**OUT_CLI** - Irão sincronizar com **FW2**.
-- [ ] **WINSRV1** - Deverá sincronizar com o **FW1**.
+- [x] **LINSRV1** - Será o servidor NTP principal da topologia.
+- [x] **FW2** - Irá sincronizar com **LINSRV1**.
+- [x] **FW1**,**OUT_CLI** - Irão sincronizar com **FW2**.
+- [x] **WINSRV1** - Deverá sincronizar com o **FW1**.
 ***
 ## PKI
 - [ ] **\*** - Ao acessar qualquer serviço que dependa de certificados não deve ser mostrados erros referente ao certificado.
 - [ ] **WINSRV2** - Será a RootCA da topologia.
-	- [ ] Os pontos de distribuição devem estar devidamente configurados.
+	- [x] Os pontos de distribuição devem estar devidamente configurados.
 	- [ ] Assinará o certificado da SubCA Windows e da SubCA Linux.
 	- [ ] Após ser devidamente configurada e ter assinado o certificado das CAs intermediárias, deverá ser desligada.
-- [ ] **WINSRV1** - Será a SubCA Windows.
-	- [ ] Os pontos de distribuição devem estar devidamente configurados.
+- [x] **WINSRV1** - Será a SubCA Windows.
+	- [x] Os pontos de distribuição devem estar devidamente configurados.
 - [ ] **LINSRV1** - Será a SubCA Linux da topologia.
 	- [ ] Os pontos de distribuição devem estar devidamente configurados.
 ***
 ## IAM
-- [ ] **WINSRV1** - Servirá como servidor de autenticação geral da topologia.
+- [x] **WINSRV1** - Servirá como servidor de autenticação geral da topologia.
 - [ ] **LINSRV1** - Deverá ingressar no domínio **wsc.local**.
-	- [ ] Ao entrar no domínio deverá ingressar na OU **LinServers**.
+	- [x] Ao entrar no domínio deverá ingressar na OU **LinServers**.
 	- [ ] Os usuários **LinUser-1**, **LinUser-2** e membros do grupo **LinAdmins** devem conseguir fazer logon.
 	- [ ] Usuários do grupo **LinAdmins** devem ter autenticação baseada em chaves RSA.
 - [ ] **FW\*** - **WINSRV1** deve servir como servidor de autenticação.
 	- [ ] Deve ser possível logar em ambos os firewalls com usuários do **AD**.
 ***
 ## VPN
-- [ ] **S2S** - Construa uma VPN Site-to-Site entre os firewalls **FW1** e **FW2** para
+- [ ] **S2S** - Construa uma VPN Site-to-Site entre os firewalls **FW1** e **FW2** para permitir acesso entre os sites.
 	- [ ] A VPN deve ter autenticação baseada em certificados.
 	- [ ] Cada firewall utilizará o certificado emitido pela CA em seu site.
 	- [ ] Todo tráfego dentro da VPN deve ser permitido.
@@ -106,6 +106,9 @@
 	- [ ] Irá listar os arquivos presentes na pasta `home` compartilhada por **WINSRV1**.
 	- [ ] Apenas listagem, não deve indexar arquivos.
 	- [ ] Os logs de acesso devem ser mandados para **LINCLI**.
+- [ ] **LINSRV1** - Irá conter um site que responderá pelo FQDN : `web.wsc.local`.
+	- [ ] Ele servirá de proxy reverso para o site `site.wsc.local`.
+	- [ ] Deve estar acessível apenas para o host `OUT_CLI`.
 - [ ] **WINSRV1** - Irá conter um site que responderá pelo FQDN : `site.wsc.local`.
 	- [ ] Qualquer acesso via `http` deve ser redirecionado para `https`.
 	- [ ] Tentativa de acesso a arquivos com a extensão `.bak` devem retornar erro `Denied`.
