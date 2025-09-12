@@ -73,7 +73,7 @@ evil-winrm -i dc.voleur.htb -u 'svc_winrm' -k -r 'voleur.htb'
 ```
 openssl s_client -showcerts -connect 10.0.10.10:443
 
-
+#### 
 
 #### ver chave publica
 ```sh

@@ -167,7 +167,7 @@ subjectAltName          = @alt_names_server
 DNS.1   = files.wsc.local
 DNS.2   = www.wsc.local
 DNS.3   = server.wsc.local
-IP.1    = 10.0.10.5
+IP.1    = 10.0.10.5:
 
 [ client_cert ]
 basicConstraints        = CA:false

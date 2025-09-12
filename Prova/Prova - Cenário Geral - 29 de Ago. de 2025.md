@@ -1,7 +1,28 @@
 ***
 ## Topologia
-![[Pasted image 20250829160118.png]]
+![[Pasted image 20250909160009.png]]
 ***
+## Endereços IP
+
+| Host         | Interface | IP Address       |
+| ------------ | --------- | ---------------- |
+| ==INTERNET== | ==0/0==   | ==172.16.10.1==  |
+|              | 0/1       | 172.16.20.1      |
+|              | 0/2       | 172.16.30.1      |
+| ==FW1==      | ==0/0==   | ==172.16.10.2==  |
+|              | 0/1       | 192.168.1.1      |
+| ==FW2==      | ==0/0==   | ==172.16.20.2==  |
+|              | 0/1       | 192.168.2.1      |
+| ==WINSRV1==  | ==0/0==   | ==192.168.1.10== |
+|              | 0/1       | 10.0.10.1        |
+| ==WINSRV2==  | ==0/0==   | ==192.168.1.20== |
+| ==WIN_CLI==  | ==0/0==   | ==10.0.10.10==   |
+| ==LINSRV1==  | ==0/0==   | ==192.168.2.10== |
+|              | 0/1       | 10.0.20.1        |
+| ==LINSRV2==  | ==0/0==   | ==192.168.2.20== |
+| ==LIN_CLI==  | ==0/0==   | ==10.0.20.10==   |
+| ==OUT_CLI==  | ==0/0==   | ==172.16.30.2==  |
+
 ## Grupos e usuários
 
 | **Node** | **Object** | **Name**   | **OU/Grupo** | **Password** |
@@ -11,7 +32,8 @@
 | WINSRV1  | User       | LinAdmin-1 | LinAdmins    | P@ssw0rd     |
 | WINSRV1  | User       | LinAdmin-2 | LinAdmins    | P@ssw0rd     |
 | WINSRV1  | Computer   | LINSRV1    | LinServes    |              |
-| WINSRV1  | User       | VPNUser    | VPNUsers     | P@ssw0rd     |
+| WINSRV1  | User       | VPNUser-1  | VPNUsers     | P@ssw0rd     |
+| WINSRV1  | User       | VPNUser-2  | VPNUsers     | P@ssw0rd     |
 | LINSRV1  | User       | admin      | admin        | P@ssw0rd     |
 | LINSRV1  | User       | root       | root         | P@ssw0rd     |
 
@@ -23,33 +45,36 @@
 - [x] **WINSRV1** - Deverá sincronizar com o **FW1**.
 ***
 ## PKI
-- [ ] **\*** - Ao acessar qualquer serviço que dependa de certificados não deve ser mostrados erros referente ao certificado.
-- [ ] **WINSRV2** - Será a RootCA da topologia.
+- [x] **\*** - Ao acessar qualquer serviço que dependa de certificados não deve ser mostrados erros referente ao certificado.
+- [x] **WINSRV2** - Será a RootCA da topologia.
 	- [x] Os pontos de distribuição devem estar devidamente configurados.
-	- [ ] Assinará o certificado da SubCA Windows e da SubCA Linux.
-	- [ ] Após ser devidamente configurada e ter assinado o certificado das CAs intermediárias, deverá ser desligada.
+	- [x] Assinará o certificado da SubCA Windows e da SubCA Linux.
+	- [x] Após ser devidamente configurada e ter assinado o certificado das CAs intermediárias, deverá ser desligada.
 - [x] **WINSRV1** - Será a SubCA Windows.
 	- [x] Os pontos de distribuição devem estar devidamente configurados.
-- [ ] **LINSRV1** - Será a SubCA Linux da topologia.
+		- [x] Todos os computadores no domínio devem confiar nos certificados da RootCA e das SubCA Linux e Windows. Essa configuração deve ser feita via GPO.
+- [x] **LINSRV1** - Será a SubCA Linux da topologia.
 	- [ ] Os pontos de distribuição devem estar devidamente configurados.
 ***
 ## IAM
-- [x] **WINSRV1** - Servirá como servidor de autenticação geral da topologia.
+- [ ] **WINSRV1** - Servirá como servidor de autenticação geral da topologia.
 - [ ] **LINSRV1** - Deverá ingressar no domínio **wsc.local**.
-	- [x] Ao entrar no domínio deverá ingressar na OU **LinServers**.
+	- [ ] Ao entrar no domínio deverá ingressar na OU **LinServers**.
 	- [ ] Os usuários **LinUser-1**, **LinUser-2** e membros do grupo **LinAdmins** devem conseguir fazer logon.
-	- [ ] Usuários do grupo **LinAdmins** devem ter autenticação baseada em chaves RSA.
+	- [ ] Usuários do grupo **LinAdmins** devem ter autenticação baseada em chaves **RSA**.
+	- [ ] O SSH deve estar rodando na porta **2022**.
+	- [ ] O usuário **root** deve ter o login via **SSH** bloqueado.
 - [ ] **FW\*** - **WINSRV1** deve servir como servidor de autenticação.
 	- [ ] Deve ser possível logar em ambos os firewalls com usuários do **AD**.
 ***
 ## VPN
-- [ ] **S2S** - Construa uma VPN Site-to-Site entre os firewalls **FW1** e **FW2** para permitir acesso entre os sites.
-	- [ ] A VPN deve ter autenticação baseada em certificados.
-	- [ ] Cada firewall utilizará o certificado emitido pela CA em seu site.
-	- [ ] Todo tráfego dentro da VPN deve ser permitido.
-	- [ ] Não deve ser possível acessar o **SITE-B** fora da VPN.
+- [x] **S2S** - Construa uma VPN Site-to-Site entre os firewalls **FW1** e **FW2** para permitir acesso entre os sites.
+	- [x] A VPN deve ter autenticação baseada em certificados.
+	- [x] Cada firewall utilizará o certificado emitido pela CA em seu site.
+	- [x] Todo tráfego dentro da VPN deve ser permitido.
+	- [x] Não deve ser possível acessar o **SITE-B** fora da VPN.
 - [ ] **Remote Access** - Construa uma VPN Remote Access para permitir acesso ao **SITE-A**
-	- [ ] Deve ser utilizado certificados emitidos pela SubCA Windows para autenticação.
+	- [ ] Deve ser utilizado certificados emitidos pela **SubCA** Windows para autenticação.
 	- [ ] **WINSRV1** deve ser utilizado como servidor de autenticação através do **LDAP**.
 	- [ ] Somente o usuários da OU **VPNUsers** devem autenticar na **VPN**.
 ***
@@ -60,13 +85,14 @@
 	- [ ] Os certificado da **RootCA Windows**, **SubCA Windows** e **SubCA Linux** devem estar nos certificados confiáveis.
 	- [ ] Computadores que ingressarem no domínio devem conseguir um certificado através do **Auto-Enrollment**.
 	- [ ] Ao tentar fazer logon em uma máquina do domínio deve ser mostrado um banner com o título **Acesso** e com o texto **Apenas acesso autorizado**.
+	- [ ] Existe uma imagem em **C:\fotos**, qualquer acesso a ela deve ser auditado.
 	- [ ] Deve-se lembrar das 15 senhas anteriores.
+	- [ ] A senha deve ter no mínimo 8 caracteres.
 	- [ ] Complexidade de senha deve estar habilitada.
 	- [ ] O usuário deve trocar sua senha a cada duas semanas.
 	- [ ] O usuário deve ser notificado da expiração da senha 3 dias antes.
 	- [ ] As credenciais não devem ser armazenadas localmente.
-	- [ ] A senha deve ter no mínimo 8 caracteres.
-	- [ ] O acesso ao **Control Panel** e ao **Resgistry editing tools** deve ser negado para usuários do grupo **VPNUsers**.
+	- [ ] O acesso ao **Control Panel**, **Resgistry editing tools** e ao **Command prompt** deve ser negado para usuários do grupo **VPNUsers**.
 	- [ ] A conta do usuário **Guest** deve ser desabilitada.
 	- [ ] Após 3 tentativas de logon com falha, o usuário será bloqueado por 25min e após 25min o número de tentativas falhas será zerada.
 	- [ ] Após 20 minutos de inatividade, a tela deve ser bloqueada.
@@ -79,8 +105,12 @@
 	- [ ] Lembrar das 15 senhas anteriores.
 	- [ ] Usuário **root** deve ser forçado a usar as políticas.
 - [ ] **LINSRV1** - O serviço do SELinux deve estar operando no modo enforcing.
+	- [ ] Permita o SSH operar na porta **2022**.
+	- [ ] Permita que o **proxy** encaminhe requisições.
+	- [ ] Permita que o serviço web utilize a pasta **\web** para armazenar as páginas.
 ***
 ## Roteamento
+- [ ] **FW\*** - Configure as rotas necessárias para o funcionamento geral da topologia.
 - [ ] **LINSRV1** - O **LINCLI** deve ter acesso site sendo executado em **WINSRV1**.
 	- [ ] O roteamento deve ser feito com NAT.
 - [ ] **WINSRV1** - O **WINCLI** deve ter acesso ao site sendo executado em **LINSRV1**.
@@ -96,6 +126,7 @@
 	- [ ] Nas pastas dos usuários não deve ser permitido arquivos `.bat`, `.ps1`, `.exe` e `.sh`.
 ***
 ## WEB
+- [ ] **LINSRV1** - Deve conter uma pasta **\web** que irá conter os arquivos dos sites, cada site terá uma pasta nomeada como domínio do site em questão.
 - [ ] **LINSRV1** - Irá conter um site que responderá pelo FQDN : `www.wsc.local`.
 	- [ ] Qualquer acesso via `http` deve ser redirecionado para `https`.
 	- [ ] Tentativa de acesso a arquivos com a extensão `.bak` devem retornar erro `Denied`.
@@ -108,7 +139,7 @@
 	- [ ] Os logs de acesso devem ser mandados para **LINCLI**.
 - [ ] **LINSRV1** - Irá conter um site que responderá pelo FQDN : `web.wsc.local`.
 	- [ ] Ele servirá de proxy reverso para o site `site.wsc.local`.
-	- [ ] Deve estar acessível apenas para o host `OUT_CLI`.
+	- [ ] Deve estar acessível apenas para as redes externas, pode ser validado pelo **OUT_CLI**.
 - [ ] **WINSRV1** - Irá conter um site que responderá pelo FQDN : `site.wsc.local`.
 	- [ ] Qualquer acesso via `http` deve ser redirecionado para `https`.
 	- [ ] Tentativa de acesso a arquivos com a extensão `.bak` devem retornar erro `Denied`.
@@ -121,10 +152,18 @@
 	- [ ] Os logs de acesso e de erro referentes ao site `www.wsc.local` devem ser enviados para este servidor.
 	- [ ] Os logs de acesso e de erro referentes ao site `files.wsc.local` devem ser enviados para este servidor.
 	- [ ] Os logs de erros e de acesso dos recebidos devem ser colocados em arquivos separados.
+	- [ ] Os logs devem ser armazenados em **/logs**.
 - [ ] **WINSRV1** - Configure o Performance Monitor para analisar o desempenho deste servidor.
 	- [ ] Tempo de processamento.
 	- [ ] Memória disponível.
 	- [ ] Disco.
 	- [ ] ○ Colete as informações a cada 60 segundos por 5 minutos e salve em **C:\performance**.
 ***
+## IDS/IPS
+- [ ] **FW1** - Deve gerar um alerta para qualquer tentativa de acesso ao site `site.wsc.local`.
+- [ ] **FW2** - Deve gerar um alerta para qualquer tentativa de acesso ao site `web.wsc.local`.
+- [ ] **FW\*** - As regras a seguir devem bloquear e alertar apenas o tráfego especificado que, não tenha sido gerado na rede interna do firewall em questão ou dentro de alguma **VPN**.
+	- [ ] Qualquer **ICMP Request** com destino a um host interno.
+	- [ ] Qualquer tentativa de port scan. O **nmap** foi instalado no host **OUT_CLI**  para validar essa regra.
+ ***
 $$\#54\ : Nycolas\ Ramos$$
