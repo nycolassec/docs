@@ -39,21 +39,21 @@
 
 ***
 ## NTP
-- [x] **LINSRV1** - Será o servidor NTP principal da topologia.
-- [x] **FW2** - Irá sincronizar com **LINSRV1**.
-- [x] **FW1**,**OUT_CLI** - Irão sincronizar com **FW2**.
-- [x] **WINSRV1** - Deverá sincronizar com o **FW1**.
+- [ ] **LINSRV1** - Será o servidor NTP principal da topologia.
+- [ ] **FW2** - Irá sincronizar com **LINSRV1**.
+- [ ] **FW1**,**OUT_CLI** - Irão sincronizar com **FW2**.
+- [ ] **WINSRV1** - Deverá sincronizar com o **FW1**.
 ***
 ## PKI
-- [x] **\*** - Ao acessar qualquer serviço que dependa de certificados não deve ser mostrados erros referente ao certificado.
-- [x] **WINSRV2** - Será a RootCA da topologia.
-	- [x] Os pontos de distribuição devem estar devidamente configurados.
-	- [x] Assinará o certificado da SubCA Windows e da SubCA Linux.
-	- [x] Após ser devidamente configurada e ter assinado o certificado das CAs intermediárias, deverá ser desligada.
-- [x] **WINSRV1** - Será a SubCA Windows.
-	- [x] Os pontos de distribuição devem estar devidamente configurados.
-		- [x] Todos os computadores no domínio devem confiar nos certificados da RootCA e das SubCA Linux e Windows. Essa configuração deve ser feita via GPO.
-- [x] **LINSRV1** - Será a SubCA Linux da topologia.
+- [ ] **\*** - Ao acessar qualquer serviço que dependa de certificados não deve ser mostrados erros referente ao certificado.
+- [ ] **WINSRV2** - Será a RootCA da topologia.
+	- [ ] Os pontos de distribuição devem estar devidamente configurados.
+	- [ ] Assinará o certificado da SubCA Windows e da SubCA Linux.
+	- [ ] Após ser devidamente configurada e ter assinado o certificado das CAs intermediárias, deverá ser desligada.
+- [ ] **WINSRV1** - Será a SubCA Windows.
+	- [ ] Os pontos de distribuição devem estar devidamente configurados.
+		- [ ] Todos os computadores no domínio devem confiar nos certificados da RootCA e das SubCA Linux e Windows. Essa configuração deve ser feita via GPO.
+- [ ] **LINSRV1** - Será a SubCA Linux da topologia.
 	- [ ] Os pontos de distribuição devem estar devidamente configurados.
 ***
 ## IAM
@@ -68,15 +68,18 @@
 	- [ ] Deve ser possível logar em ambos os firewalls com usuários do **AD**.
 ***
 ## VPN
-- [x] **S2S** - Construa uma VPN Site-to-Site entre os firewalls **FW1** e **FW2** para permitir acesso entre os sites.
-	- [x] A VPN deve ter autenticação baseada em certificados.
-	- [x] Cada firewall utilizará o certificado emitido pela CA em seu site.
-	- [x] Todo tráfego dentro da VPN deve ser permitido.
-	- [x] Não deve ser possível acessar o **SITE-B** fora da VPN.
-- [ ] **Remote Access** - Construa uma VPN Remote Access para permitir acesso ao **SITE-A**
+- [ ] **S2S** - Construa uma VPN Site-to-Site entre os firewalls **FW1** e **FW2** para permitir acesso entre os sites.
+	- [ ] A VPN deve ter autenticação baseada em certificados.
+	- [ ] Cada firewall utilizará o certificado emitido pela CA em seu site.
+	- [ ] Todo tráfego dentro da VPN deve ser permitido.
+	- [ ] Não deve ser possível acessar o **SITE-B** fora da VPN.
+- [ ] **Remote Access - Site-A** - Construa uma VPN Remote Access para permitir acesso do **OUT_CLI** ao **SITE-A**
 	- [ ] Deve ser utilizado certificados emitidos pela **SubCA** Windows para autenticação.
 	- [ ] **WINSRV1** deve ser utilizado como servidor de autenticação através do **LDAP**.
 	- [ ] Somente o usuários da OU **VPNUsers** devem autenticar na **VPN**.
+- [ ] **Remote Access - LINSRV1** - Construa uma VPN Remote Access para permitir acesso do **OUT_CLI** ao **LINSRV1**
+	- [ ] O **LINSRV1** deve ser o servidor VPN.
+	- [ ] Deve ser utilizado certificados emitidos pela **SubCA** Linux para autenticação.
 ***
 ## Políticas
 - [ ] **WINSRV1** - Todas as políticas a seguir devem ser configuradas via **GPO**.
@@ -92,7 +95,7 @@
 	- [ ] O usuário deve trocar sua senha a cada duas semanas.
 	- [ ] O usuário deve ser notificado da expiração da senha 3 dias antes.
 	- [ ] As credenciais não devem ser armazenadas localmente.
-	- [ ] O acesso ao **Control Panel**, **Resgistry editing tools** e ao **Command prompt** deve ser negado para usuários do grupo **VPNUsers**.
+	- [ ] O acesso ao **Control Panel**, **Resgistry editing tools**, **Command prompt** e o **Run** deve ser negado para usuários do grupo **VPNUsers**.
 	- [ ] A conta do usuário **Guest** deve ser desabilitada.
 	- [ ] Após 3 tentativas de logon com falha, o usuário será bloqueado por 25min e após 25min o número de tentativas falhas será zerada.
 	- [ ] Após 20 minutos de inatividade, a tela deve ser bloqueada.
@@ -143,7 +146,6 @@
 - [ ] **WINSRV1** - Irá conter um site que responderá pelo FQDN : `site.wsc.local`.
 	- [ ] Qualquer acesso via `http` deve ser redirecionado para `https`.
 	- [ ] Tentativa de acesso a arquivos com a extensão `.bak` devem retornar erro `Denied`.
-	- [ ] Erros `403` devem retornar uma página personalizada.
 	- [ ] Rota `/admin` deve requisitar autenticação simples.
 ***
 ## Log

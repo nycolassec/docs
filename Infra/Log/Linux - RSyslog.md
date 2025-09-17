@@ -40,7 +40,7 @@ O `rsyslog` dispõe de vários campos para identificação do log. Nesse exemplo
 ```sh
 $ vim /etc/rsyslog.d/01-Apache.conf
 # Defina o nome e onde será salvo os logs do template
-template(name="ApacheLogs", type="string" string="/var/log/remote/%FROMHOST-IP%/%PROGRAMNAME%.log")
+template(name="ApacheLogs" type="string" string="/var/log/remote/%FROMHOST-IP%/%PROGRAMNAME%.log")
 
 # Filtro para logs do Apache de hosts remotos
 if $fromhost-ip != '127.0.0.1' and $programname startswith 'httpd' then{

@@ -161,6 +161,8 @@ keyUsage                = critical,digitalSignature,cRLSign,keyCertSign
 basicConstraints        = CA:false
 keyUsage                = digitalSignature, keyEncipherment
 extendedKeyUsage        = serverAuth
+nsCertType              = server
+authorityKeyIdentifier  = keyid,issuer
 subjectAltName          = @alt_names_server
 
 [ alt_names_server ]
@@ -173,6 +175,10 @@ IP.1    = 10.0.10.5:
 basicConstraints        = CA:false
 keyUsage                = digitalSignature
 extendedKeyUsage        = clientAuth
+nsCertType              = client
+authorityKeyIdentifier  = keyid,issuer
+
+
 subjectAltName          = @alt_names_client
 
 [ alt_names_client ]

@@ -4,9 +4,9 @@ dnf update -y
 dnf install epel-release -y
 dnf install openvpn easy-rsa -y
 ```
-
-### CA
-Pelo foco dessa documentação ser a configuração da `VPN` e não da `CA`, essa parte será feita com o `easy-rsa`.
+***
+## PKI
+Pelo foco da documentação ser a VPN uma root CA será utilizada para assinar os certificados do servidor e dos clients.
 #### CA Build
 Aqui criaremos 
 ```sh
@@ -32,42 +32,82 @@ Agora criamos o certificado dos clientes.
 #### Diffie Hellman & TLS Key
 Agora geramos nosso parâmetro do `Diffie Hellman` e a chave para autenticação `TLS`
 ```sh
-./easyrsa gen-dh
-openvpn --genkey secret ./pki/ta.key
+$ openssl dhparam -out ./pki/dh.pem 2048
+$ openvpn --genkey secret ./pki/ta.key
 ```
 #### Move to server
 Pra facilitar nosso trabalho podemos transferir os certificados e as chaves para a pasta de configuração de servidor do `openvpn`.
 ```sh
 cp -pR /usr/share/easy-rsa/3/pki/{issued,private,ca.crt,dh.pem,ta.key} /etc/openvpn/server/
 ```
-### Configure VPN Server
+***
+## Configure VPN Server
 ```conf
-port        1194
-proto       udp
-dev         tun
+# Geral
+local   10.0.10.5
+port    1194
+proto   udp
+dev     tun
 
-# 
-ca          ca.crt
-cert        issued/vpn.olimpiada.com.crt
-key         private/vpn.olimpiada.com.key
-dh          dh.pem
+# Certificados e chaves
+ca          root-ca-wsc.local.crt
+cert        vpn-server.wsc.local.cert.pem
+key         vpn-server.wsc.local.key.pem
+dh          vpn-server.wsc.local.dh.pem
+tls-crypt   vpn-server.wsc.local.ta.key 0
 
-# A rede que será usada no túnel
-server      10.0.30.0 255.255.255.0
+# Configuração de rede   
+server                  10.8.0.0 255.255.255.0
+ifconfig-pool-persist   ipp.txt
+topology                subnet
 
-keepalive   10 120
+# Rotas
+push "route 192.168.10.0 255.255.255.0"
+push "redirect-gateway def1 bypass-dhcp"
+push "dhcp-option DNS 10.0.10.5"
 
-tls-auth    ta.key 0
+; client-to-client # Permite que os clients se comuniquem dentro do túnel da VPN
+; duplicate-cn     # Permite que vários clients utilizem o mesmo certificado
 
-# Opções de persistência
+# Cipher
+cipher  AES-256-CBC
+auth    SHA256
+
+# Persistência
+keepalive 10 120
 persist-key
 persist-tun
 
-# Caminhos de log
-status      /var/log/openvpn.log
-log         /var/log/openvpn.log
-log-append  /var/log/openvpn.log
-
-# Verbosidade do log
+# Logs
+status      server-status.log
+log         openvpn.log
+log-append  openvpn.log
 verb        3
+```
+***
+## Client
+```conf
+client
+proto   udp
+remote  10.0.10.5 1194
+
+tls-auth vpn-server.wsc.local.ta.key 1
+
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+
+ca      root-ca.wsc.local.key.pem
+cert    vpn-client.wsc.local.cert.pem
+key     vpn-client.wsc.local.cert.pem
+
+remote-cert-tls server
+
+redirect-gateway def1
+
+data-ciphers-fallback AES-256-CBC
+auth SHA256
+auth-nocahe
+
 ```
