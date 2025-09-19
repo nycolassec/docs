@@ -50,7 +50,7 @@ proto   udp
 dev     tun
 
 # Certificados e chaves
-ca          root-ca-wsc.local.crt
+ca          chain-ca-wsc.local.crt
 cert        vpn-server.wsc.local.cert.pem
 key         vpn-server.wsc.local.key.pem
 dh          vpn-server.wsc.local.dh.pem
@@ -87,27 +87,27 @@ verb        3
 ***
 ## Client
 ```conf
+# Geral
 client
 proto   udp
 remote  10.0.10.5 1194
+dev     tun
 
-tls-auth vpn-server.wsc.local.ta.key 1
-
+# Persistência
 resolv-retry infinite
 nobind
 persist-key
 persist-tun
 
-ca      root-ca.wsc.local.key.pem
-cert    vpn-client.wsc.local.cert.pem
-key     vpn-client.wsc.local.cert.pem
-
+# Certificados e chaves
+ca          chain-ca.wsc.local.key.pem
+cert        vpn-client.wsc.local.cert.pem
+key         vpn-client.wsc.local.cert.pem
+tls-crypt   vpn-server.wsc.local.ta.key 1
 remote-cert-tls server
 
-redirect-gateway def1
-
+# Cipher
 data-ciphers-fallback AES-256-CBC
 auth SHA256
 auth-nocahe
-
 ```

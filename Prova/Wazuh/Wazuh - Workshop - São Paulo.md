@@ -1,10 +1,11 @@
 #### 1 - Qual o endereço IP do atacante?
+Após fazer um filtro para identificar acessos web, foi identificado um número muito grande de requisições vindo de um mesmo endereço IP `192.168.10.118` com o **User-Agent** da ferramenta de fuzzing **Fuzz Faster U Fool v1.1.0**.
 
-
+**Filtro:** `agent.name: Nessus AND decoder.name: web-accesslog`
 **Answer :** `192.168.10.118`
 ***
 #### 2 - Qual protocolo/porta o hacker utilizou para iniciar a exploração? Ex: SNMP/161
-
+Aqui podemos filtrar por tentativas de logon tanto bem (`4624`) quanto mal (`4625`) sucedidas. Vemos que o IP do atacante 
 
 **Answer :** `smb/445`
 ***
@@ -90,3 +91,6 @@ svchost.exe_2025-06-09T12:53:36Z
 
 
 ***
+
+
+agent.name: Nessus AND 192.168.10.118 AND data.win.system.eventID: (4624 OR 4625)

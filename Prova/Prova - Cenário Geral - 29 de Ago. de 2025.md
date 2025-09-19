@@ -137,7 +137,7 @@
 	- [ ] Rota `/admin` deve requisitar autenticação simples com credenciais `admin:P@ssw0rd`
 	- [ ] Os logs de acesso devem ser mandados para **LINCLI**.
 - [ ] **LINSRV1** - Irá conter um site que responderá pelo FQDN : `files.wsc.local`.
-	- [ ] Irá listar os arquivos presentes na pasta `home` compartilhada por **WINSRV1**.
+	- [ ] Irá listar os arquivos presentes na pasta `/web/files.wsc.local`.
 	- [ ] Apenas listagem, não deve indexar arquivos.
 	- [ ] Os logs de acesso devem ser mandados para **LINCLI**.
 - [ ] **LINSRV1** - Irá conter um site que responderá pelo FQDN : `web.wsc.local`.
@@ -164,8 +164,9 @@
 ## IDS/IPS
 - [ ] **FW1** - Deve gerar um alerta para qualquer tentativa de acesso ao site `site.wsc.local`.
 - [ ] **FW2** - Deve gerar um alerta para qualquer tentativa de acesso ao site `web.wsc.local`.
-- [ ] **FW\*** - As regras a seguir devem bloquear e alertar apenas o tráfego especificado que, não tenha sido gerado na rede interna do firewall em questão ou dentro de alguma **VPN**.
+- [ ] **FW\*** - As regras a seguir devem  alertar apenas o tráfego especificado que, não tenha sido gerado na rede interna do firewall em questão ou dentro de alguma **VPN**.
 	- [ ] Qualquer **ICMP Request** com destino a um host interno.
-	- [ ] Qualquer tentativa de port scan. O **nmap** foi instalado no host **OUT_CLI**  para validar essa regra.
+	- [ ] Tentativas de **XMAS** scan. O **nmap** foi instalado no host **OUT_CLI**  para validar essa regra.
+	- [ ] Tentativas de conexão com a porta **22** e **2022**.
  ***
 $$\#54\ : Nycolas\ Ramos$$
