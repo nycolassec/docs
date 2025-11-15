@@ -1,6 +1,9 @@
 ### Info
 Para evitar que qualquer interface seja conectada as portas do Switch podemos definir quais endereços *MAC* serão aceitos. Podemos fazer isso de forma estática ou dinâmica, pedindo ao Switch que armazene e aceite somente os primeiros *MACs* encaminhados pela porta escolhida. Chamamos isso de *Port Security*
-![[Pasted image 20250515094607.png]]
+
+<br>
+
+![](<../../images/Pasted image 20250515094607.png>)
 
 | PC   | IP         | MAC               | If   |
 | ---- | ---------- | ----------------- | ---- |
@@ -54,11 +57,12 @@ end
 ```
 show port-security
 ```
-![[Pasted image 20250515094301.png]]
+
+![](<../../images/Pasted image 20250515094301.png>)
 
 ```
 show port-security address
 ```
-![[Pasted image 20250515094421.png]]
+![](<../../images/Pasted image 20250515094421.png>)
 
 
