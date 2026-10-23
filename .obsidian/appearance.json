@@ -1,0 +1,11 @@
+{
+  "accentColor": "",
+  "cssTheme": "Minimal Dracula",
+  "monospaceFontFamily": "Fira Code",
+  "textFontFamily": "Inter",
+  "baseFontSizeAction": true,
+  "baseFontSize": 14,
+  "theme": "obsidian",
+  "interfaceFontFamily": "Inter",
+  "enabledCssSnippets": []
+}

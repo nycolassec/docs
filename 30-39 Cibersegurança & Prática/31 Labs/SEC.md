@@ -1,0 +1,7 @@
+The hive 5
+
+SOAR
+SIEM
+XDR
+NDR
+IPS/IDS
